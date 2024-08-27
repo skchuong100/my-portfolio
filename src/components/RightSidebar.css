@@ -1,0 +1,18 @@
+.right-sidebar {
+    position: fixed;
+    right: 0;
+    top: 330px;
+    height: 100vh; /* Make the sidebar take up the full height of the viewport */
+    width: 150px; /* Width of the sidebar */
+    display: flex;
+    align-items: center; /* Center the gradient line vertically */
+    justify-content: center; /* Center the gradient line horizontally */
+    z-index: 999; /* Ensure the sidebar is on top of other elements */
+    background-color: transparent; /* If you want a transparent sidebar */
+}
+
+.gradient-line {
+    width: 3px; /* Width of the gradient line */
+    height: 150px; /* Height of the gradient line */
+    background: linear-gradient(#7579FA, #FBAE6A); /* Gradient from top to bottom */
+}
