@@ -1,15 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import LeftSidebar from './components/LeftSidebar';
-import RightSidebar from './components/RightSidebar'; // This should match the filename
+import Sidebars from './components/Sidebars';
 import './App.css';
 
 function App() {
     return (
         <div className="App">
             <Navbar />
-            <LeftSidebar />
-            <RightSidebar />
+            <Sidebars />
             <section className="section-one" id="about">
                 <h1>Section One - About</h1>
                 <p>This is the first section.</p>

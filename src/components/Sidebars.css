@@ -1,0 +1,80 @@
+.left-sidebar,
+.right-sidebar {
+    position: fixed;
+    top: 100px;
+    height: 100vh; /* Full height of the viewport */
+    width: 150px; /* Width of the sidebar */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: space-between; /* Space icons and line appropriately */
+    z-index: 999; /* Ensure the sidebar is on top of other elements */
+    background-color: transparent; /* Transparent sidebar */
+}
+
+.left-sidebar {
+    position: fixed;
+    left: 0;
+    top: 550px;
+    height: 100vh; /* Full height of the viewport */
+    width: 150px; /* Width of the sidebar */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items to the start, reducing space between them */
+    z-index: 999; /* Ensure the sidebar is on top of other elements */
+    background-color: transparent; /* Transparent sidebar */
+    padding-top: 20px; /* Optional: Adjust padding to fine-tune spacing */
+}
+
+.right-sidebar {
+    right: 0; /* Align to the right */
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column; /* Stack icons vertically */
+    gap: 20px; /* Space between icons */
+}
+
+.sidebar-icon {
+    width: 30px; /* Adjust to the width of your icons */
+    height: 30px; /* Adjust to the height of your icons */
+    background-size: contain; /* Ensure the background image covers the whole div */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: center; /* Center the background image */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.icon-instagram {
+    background-image: url('../assets/instagramWhite.png');
+}
+
+.icon-github {
+    background-image: url('../assets/github-signWhite.png');
+}
+
+.icon-linkedin {
+    background-image: url('../assets/linkedinWhite.png');
+}
+
+/* Hover effects */
+.icon-instagram:hover {
+    background-image: url('../assets/instagramPurple.png');
+}
+
+.icon-github:hover {
+    background-image: url('../assets/github-signOrange.png');
+}
+
+.icon-linkedin:hover {
+    background-image: url('../assets/linkedinPurple.png');
+}
+
+
+.gradient-line {
+    width: 3px; /* Width of the gradient line */
+    height: 150px; /* Height of the gradient line */
+    background: linear-gradient(#7579FA, #FBAE6A); /* Gradient from top to bottom */
+    margin-top: 20px; /* Adjust bottom margin as needed */
+}
