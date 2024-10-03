@@ -58,7 +58,7 @@
 /* Email text in the right sidebar */
 .email-text {
     font-size: 16px;
-    font-weight: 400; /* Regular weight */
+    font-weight: 900; /* Regular weight */
     color: white;
     writing-mode: vertical-rl;
     text-orientation: mixed;
