@@ -4,7 +4,7 @@ import './Sidebars.css';
 const Sidebars = () => {
     return (
         <>
-            <div className="left-sidebar">
+            <div className="sidebar left-sidebar">
                 <div className="icon-container">
                     <a href="https://www.instagram.com/chuongspencer48/" target="_blank" rel="noopener noreferrer">
                     <div className="sidebar-icon icon-instagram"></div>
@@ -18,7 +18,10 @@ const Sidebars = () => {
                 </div>
                 <div className="gradient-line"></div>
             </div>
-            <div className="right-sidebar">
+            <div className="sidebar right-sidebar">
+                <div className="email-container">
+                    <a href="mailto:spencerchuong0@gmail.com" className="email-text">spencerchuong0@gmail.com</a>
+                </div>
                 <div className="gradient-line"></div>
             </div>
         </>

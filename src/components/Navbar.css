@@ -23,7 +23,6 @@ body::-webkit-scrollbar {
     align-items: center;
     padding: 10px 40px; /* General padding for the navbar to create space on both sides */
     z-index: 1000;
-    border: 2px solid red; /* Optional: Border for debugging */
 }
 
 .navbar-left {

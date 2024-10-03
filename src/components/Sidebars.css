@@ -1,50 +1,82 @@
-.left-sidebar,
-.right-sidebar {
+/* Shared sidebar layout for both left and right */
+.sidebar {
     position: fixed;
-    top: 100px;
+    top: 0;
     height: 100vh; /* Full height of the viewport */
-    width: 150px; /* Width of the sidebar */
+    width: 150px; /* Width of both sidebars */
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: space-between; /* Space icons and line appropriately */
-    z-index: 999; /* Ensure the sidebar is on top of other elements */
-    background-color: transparent; /* Transparent sidebar */
+    flex-direction: column;
+    justify-content: space-between; /* Space between containers and the bar */
+    align-items: center;
+    z-index: 999;
+    background-color: transparent;
+    padding-top: 0px; /* Adjust padding to control the top positioning */
 }
 
+/* Specific positioning for left and right */
 .left-sidebar {
-    position: fixed;
-    left: 0;
-    top: 550px;
-    height: 100vh; /* Full height of the viewport */
-    width: 150px; /* Width of the sidebar */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: flex-start; /* Align items to the start, reducing space between them */
-    z-index: 999; /* Ensure the sidebar is on top of other elements */
-    background-color: transparent; /* Transparent sidebar */
-    padding-top: 20px; /* Optional: Adjust padding to fine-tune spacing */
+    left: 0; /* Align to the left */
 }
 
 .right-sidebar {
     right: 0; /* Align to the right */
 }
-
+.sidebar-icon {
+    width: 40px; /* Adjust icon size */
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+/* Icon container in the left sidebar */
 .icon-container {
     display: flex;
-    flex-direction: column; /* Stack icons vertically */
-    gap: 20px; /* Space between icons */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Reduce the gap between icons */
+    margin-top: 599px; /* Reduced margin between the email container and the bar */
+
 }
 
-.sidebar-icon {
-    width: 30px; /* Adjust to the width of your icons */
-    height: 30px; /* Adjust to the height of your icons */
-    background-size: contain; /* Ensure the background image covers the whole div */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
-    background-position: center; /* Center the background image */
-    transition: all 0.3s ease; /* Smooth transition */
+/* Email container in the right sidebar */
+.email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 509px; /* Reduced margin between the email container and the bar */
+
 }
+
+/* Gradient line - ensure it's aligned properly */
+.gradient-line {
+    width: 3px;
+    height: 150px;
+    background: linear-gradient(#7579FA, #FBAE6A);
+}
+
+/* Email text in the right sidebar */
+.email-text {
+    font-size: 16px;
+    font-weight: 400; /* Regular weight */
+    color: white;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(360deg); /* Ensure the text is top to bottom */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-bottom: 10px; /* Fine-tune spacing between email text and the bar */
+    font-family: "Roboto Mono", monospace;
+
+}
+
+.email-text:hover {
+    background: linear-gradient(145deg, #7579FA, #FBAE6A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Make text transparent to show the gradient */
+    font-weight: 700; /* Make the font bold when hovered */
+}
+
 
 .icon-instagram {
     background-image: url('../assets/instagramWhite.png');
