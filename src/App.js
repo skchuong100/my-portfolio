@@ -8,21 +8,25 @@ function App() {
         <div className="App">
             <Navbar />
             <Sidebars />
-            <section className="section-one" id="about">
+            <section id="section-one" className="section-one">
                 <h1>Section One - About</h1>
                 <p>This is the first section.</p>
             </section>
-            <section className="section-two" id="projects">
-                <h1>Section Two - Projects</h1>
+            <section id="section-two" className="section-two">
+                <h1>Section Two - About</h1>
                 <p>This is the second section.</p>
             </section>
-            <section className="section-three" id="contact">
-                <h1>Section Three - Contact</h1>
+            <section id="section-three" className="section-three">
+                <h1>Section Three - Projects</h1>
                 <p>This is the third section.</p>
             </section>
-            <section className="section-four" id="resume">
-                <h1>Section Four - Resume</h1>
+            <section id="section-four" className="section-four">
+                <h1>Section Four - Contact</h1>
                 <p>This is the fourth section.</p>
+            </section>
+            <section id="resume" className="resume">
+                <h1>Resume</h1>
+                <p>This is the resume section.</p>
             </section>
         </div>
     );

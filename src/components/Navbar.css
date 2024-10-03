@@ -16,7 +16,7 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #0B080E; /* Matches your first and third section color */
+    background-color: transparent; /* Matches your first and third section color */
     color: white;
     display: flex;
     justify-content: space-between;
@@ -25,15 +25,21 @@ body::-webkit-scrollbar {
     z-index: 1000;
 }
 
-.navbar-left {
-    padding-left: 60px; /* Additional padding for the logo on the left */
-}
+/* Logo link styling */
 .navbar-left .logo {
     font-size: 50px;
     font-weight: bold;
     color: #7579FA; /* Matches the second and fourth section color */
     font-family: "Tourney", sans-serif;
+    text-decoration: none; /* Remove underline */
+    margin-left: 60px;
 }
+
+/* Ensure the logo link doesn’t get underlined on hover */
+.navbar-left .logo:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
 
 .navbar-right {
     display: flex;
