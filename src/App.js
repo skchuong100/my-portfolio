@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Sidebars from './components/Sidebars';
+import './components/FirstSection.css';
 import './App.css';
 
 function App() {
@@ -9,8 +10,10 @@ function App() {
             <Navbar />
             <Sidebars />
             <section id="section-one" className="section-one">
-                <h1>Section One - About</h1>
-                <p>This is the first section.</p>
+            <div className="intro-text">
+                <span className="hello-text">Hello,</span>
+                <span className="name-text">I'm Spencer Chuong</span>
+            </div>
             </section>
             <section id="section-two" className="section-two">
                 <h1>Section Two - About</h1>

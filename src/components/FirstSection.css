@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Bungee';
+    src: url('../assets/fonts/Bungee-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.intro-text {
+    font-family: "Bungee", monospace;
+    font-size: 50px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns text to the left */
+}
+
+.hello-text {
+    color: white;
+}
+
+.name-text {
+    color: #7579FA;
+}
