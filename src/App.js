@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Sidebars from './components/Sidebars';
-import './components/FirstSection.css';
+import FirstSection from './components/FirstSection'; // Import FirstSection component
 import './App.css';
 
 function App() {
@@ -10,10 +10,12 @@ function App() {
             <Navbar />
             <Sidebars />
             <section id="section-one" className="section-one">
-            <div className="intro-text">
-                <span className="hello-text">Hello,</span>
-                <span className="name-text">I'm Spencer Chuong</span>
-            </div>
+                <div className="intro-text">
+                    <span className="hello-text">Hello,</span>
+                    <span className="name-text">I'm Spencer Chuong</span>
+                    {/* Use FirstSection component here */}
+                    <FirstSection />
+                </div>
             </section>
             <section id="section-two" className="section-two">
                 <h1>Section Two - About</h1>

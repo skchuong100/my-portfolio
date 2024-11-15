@@ -21,3 +21,30 @@
 .name-text {
     color: #7579FA;
 }
+
+.intro-subtext {
+    font-family: "Roboto Mono", monospace;
+    font-size: 18px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+}
+
+.rotating-text {
+    color: #FBAE6A;
+    font-weight: bold;
+    padding: 0 10px; /* Padding to keep text width consistent */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth fade and movement */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px); /* Move text slightly down while fading out */
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0); /* Bring text back to its original position */
+}
