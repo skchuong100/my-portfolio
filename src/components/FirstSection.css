@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Aligns text to the left */
+    line-height: 65px;
 }
 
 .hello-text {
@@ -22,14 +23,24 @@
     color: #7579FA;
 }
 
-.intro-subtext {
-    font-family: "Roboto Mono", monospace;
-    font-size: 18px;
-    color: white;
-    display: inline-flex;
-    align-items: center;
+.intro-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    margin-top: 0px; /* Optional: Add spacing above the container */
 }
 
+
+/* "A driven..." text */
+.intro-subtext {
+    font-family: "Roboto Mono", monospace;
+    font-size: 25px;
+    color: white;
+    margin-top: -20px; /* Optional: Add spacing above the container */
+
+}
+
+/* Rotating text styles */
 .rotating-text {
     color: #FBAE6A;
     font-weight: bold;
@@ -39,12 +50,28 @@
     transform: translateY(0);
 }
 
+/* Fade-out and fade-in styles for smooth transition */
 .fade-out {
     opacity: 0;
-    transform: translateY(10px); /* Move text slightly down while fading out */
+    transform: translateY(20px); /* Move text slightly down while fading out */
 }
 
 .fade-in {
     opacity: 1;
     transform: translateY(0); /* Bring text back to its original position */
+}
+
+
+/* Paragraph styling */
+.intro-paragraph {
+    font-family: "Roboto Mono", monospace;
+    font-size: 20px;
+    color: white;
+    line-height: 1.6; /* Increase readability */
+    max-width: 600px; /* Optional: Limit the width for better text flow */
+    margin: 0; /* Reset any default margin */
+    text-align: left; /* Align text to the left */
+    margin-top: -5px; /* Optional: Add spacing above the container */
+
+
 }

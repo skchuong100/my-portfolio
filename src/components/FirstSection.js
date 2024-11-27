@@ -25,10 +25,15 @@ const FirstSection = () => {
     }, [phrases.length]);
 
     return (
-        <div className="intro-subtext">
-            A driven <span className={`rotating-text ${isFading ? "fade-out" : "fade-in"}`}>
-                {phrases[currentPhraseIndex]}
-            </span>
+        <div className="intro-container">
+            <div className="intro-subtext">
+                A driven <span className={`rotating-text ${isFading ? "fade-out" : "fade-in"}`}>
+                    {phrases[currentPhraseIndex]}
+                </span>
+            </div>
+            <p className="intro-paragraph">
+                I am an aspiring software engineer in the making who is currently making small projects that would help benefit others.
+            </p>
         </div>
     );
 };
