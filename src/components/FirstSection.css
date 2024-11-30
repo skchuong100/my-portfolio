@@ -23,21 +23,39 @@
     color: #7579FA;
 }
 
-.intro-container {
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the left */
-    margin-top: 0px; /* Optional: Add spacing above the container */
-}
-
-
 /* "A driven..." text */
 .intro-subtext {
     font-family: "Roboto Mono", monospace;
-    font-size: 25px;
+    font-size: 18px;
     color: white;
-    margin-top: -20px; /* Optional: Add spacing above the container */
+    margin-bottom: 10px;
+    text-align: left; /* Ensure text is left-aligned */
+    width: 100%; /* Ensure that this block takes full width within text-container */
+}
 
+
+/* Parent container to hold text and images side by side */
+.intro-container {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Vertically align the items to the center */
+    justify-content: space-between; /* Space between the text and image */
+    width: 100%; /* Take up full width */
+    margin-top: 20px;
+    position: relative; /* Enable positioning for child elements */
+    padding: 20px; /* Add some padding to avoid touching edges */
+}
+
+
+/* Text container styling */
+.text-container {
+    flex: 1; /* Allows the text container to take as much space as needed */
+    max-width: 50%; /* Optional: limit the width of the text to 50% */
+    display: flex;
+    flex-direction: column; /* Stack the text elements vertically */
+    align-items: flex-start; /* Align text to the left */
+    text-align: left; /* Explicitly make sure text is left-aligned */
+    border: 1px solid blue;
 }
 
 /* Rotating text styles */
@@ -65,13 +83,39 @@
 /* Paragraph styling */
 .intro-paragraph {
     font-family: "Roboto Mono", monospace;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
-    line-height: 1.6; /* Increase readability */
-    max-width: 600px; /* Optional: Limit the width for better text flow */
-    margin: 0; /* Reset any default margin */
-    text-align: left; /* Align text to the left */
-    margin-top: -5px; /* Optional: Add spacing above the container */
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0;
+    text-align: left;
+}
 
 
+/* Image container styling */
+.image-container {
+    position: relative; /* Allows overlapping images */
+    flex: 1; /* Allows the image container to take as much space as needed */
+    max-width: 50%; /* Optional: limit the width of the image container to 50% */
+    display: flex;
+    justify-content: center; /* Center image inside the container */
+    align-items: center;
+    gap: 20px;
+    border: 1px solid red;
+}
+
+/* Color gradient image */
+.color-gradient {
+    position: absolute;
+    top:-30%;
+    left: 0;
+    width: 100%; /* Make it cover the entire container */
+    z-index: 1; /* Lower z-index to stay behind */
+}
+
+/* Spencer image */
+.spencer-image {
+    position: relative;
+    width: 70%; /* Ensure it stays within the container */
+    z-index: 2; /* Higher z-index to be in front */
 }

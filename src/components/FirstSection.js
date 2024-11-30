@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './FirstSection.css';
-
+import colorGradient from '../assets/color_gradient.png';
+import spencerImage from '../assets/spencer_image.png';
 const FirstSection = () => {
     const phrases = [
         "computer science graduate",
@@ -26,15 +27,29 @@ const FirstSection = () => {
 
     return (
         <div className="intro-container">
-            <div className="intro-subtext">
-                A driven <span className={`rotating-text ${isFading ? "fade-out" : "fade-in"}`}>
-                    {phrases[currentPhraseIndex]}
-                </span>
+            {/* Text Container */}
+            <div className="text-container">
+                <div className="intro-text">
+                    <span className="hello-text">Hello,</span>
+                    <span className="name-text">I'm Spencer Chuong</span>
+                </div>
+                <div className="intro-subtext">
+                    A driven <span className={`rotating-text ${isFading ? "fade-out" : "fade-in"}`}>
+                        {phrases[currentPhraseIndex]}
+                    </span>
+                </div>
+                <p className="intro-paragraph">
+                    I am an aspiring software engineer in the making who is currently making small projects that would help benefit others.
+                </p>
             </div>
-            <p className="intro-paragraph">
-                I am an aspiring software engineer in the making who is currently making small projects that would help benefit others.
-            </p>
+
+            {/* Image Container */}
+            <div className="image-container">
+                <img src={colorGradient} alt="Color Gradient" className="color-gradient" />
+                <img src={spencerImage} alt="Spencer Chuong" className="spencer-image" />
+            </div>
         </div>
+
     );
 };
 

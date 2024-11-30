@@ -11,9 +11,6 @@ function App() {
             <Sidebars />
             <section id="section-one" className="section-one">
                 <div className="intro-text">
-                    <span className="hello-text">Hello,</span>
-                    <span className="name-text">I'm Spencer Chuong</span>
-                    {/* Use FirstSection component here */}
                     <FirstSection />
                 </div>
             </section>
