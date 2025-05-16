@@ -1,38 +1,71 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebars from './components/Sidebars';
+
 import './components/FirstSection.css';
 import './App.css';
 
+/**
+ * Single‑section demo with a mini‑page column that scrolls even when the
+ * cursor is outside it.  We now animate the wheel movement so the scroll
+ * feels smoother (ease‑out inertia).
+ */
 function App() {
-    return (
-        <div className="App">
-            <Navbar />
-            <Sidebars />
-            <section id="section-one" className="section-one">
-            <div className="intro-text">
-                <span className="hello-text">Hello,</span>
-                <span className="name-text">I'm Spencer Chuong</span>
-            </div>
-            </section>
-            <section id="section-two" className="section-two">
-                <h1>Section Two - About</h1>
-                <p>This is the second section.</p>
-            </section>
-            <section id="section-three" className="section-three">
-                <h1>Section Three - Projects</h1>
-                <p>This is the third section.</p>
-            </section>
-            <section id="section-four" className="section-four">
-                <h1>Section Four - Contact</h1>
-                <p>This is the fourth section.</p>
-            </section>
-            <section id="resume" className="resume">
-                <h1>Resume</h1>
-                <p>This is the resume section.</p>
-            </section>
+  const scrollRef = useRef(null);
+
+  // ----- smooth wheel reroute -------------------------------------------
+  useEffect(() => {
+    const col = scrollRef.current;
+    if (!col) return;
+
+    let target = col.scrollTop;         // where we want to scroll to
+    let animFrame = null;
+
+    const easeScroll = () => {
+      const diff = target - col.scrollTop;
+      // stop when we're ~1px away
+      if (Math.abs(diff) < 1) {
+        col.scrollTop = target;
+        animFrame = null;
+        return;
+      }
+      // move a fraction of the remaining distance (ease‑out)
+      col.scrollTop += diff * 0.2;
+      animFrame = requestAnimationFrame(easeScroll);
+    };
+
+    const onWheel = (e) => {
+      e.preventDefault();          // keep page locked
+      target += e.deltaY;          // accumulate wheel delta
+      // clamp to scroll range
+      target = Math.max(0, Math.min(target, col.scrollHeight - col.clientHeight));
+      if (!animFrame) animFrame = requestAnimationFrame(easeScroll);
+    };
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+    return () => window.removeEventListener('wheel', onWheel);
+  }, []);
+
+  return (
+    <div className="App">
+      <Navbar />
+      <Sidebars />
+
+      <section id="section-one" className="section-one">
+        {/* empty left half for now */}
+        <div className="left-half" />
+
+        {/* right half centres the mini page */}
+        <div className="right-half">
+          <div className="scroll-column" ref={scrollRef}>
+            <div className="scroll-item">Test 1</div>
+            <div className="scroll-item">Test 2</div>
+            <div className="scroll-item">Test 3</div>
+          </div>
         </div>
-    );
+      </section>
+    </div>
+  );
 }
 
 export default App;

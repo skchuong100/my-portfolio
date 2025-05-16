@@ -21,3 +21,46 @@
 .name-text {
     color: #7579FA;
 }
+
+/* ── split 50-50 viewport ─────────────────────────────────── */
+.section-one {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* left | right */
+    background: #0B080E;
+    padding-top: 4rem;                /* keep clear of fixed navbar */
+    position: fixed;    /* stretch across the screen */
+    inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
+    overflow: hidden;   /* nothing inside can leak out */
+  }
+
+  /* right column flex-centres its content */
+  .right-half {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;              /* vertical centre */
+  }
+
+  /* mini-page column */
+  .scroll-column {
+    width: min(500px, 90%);
+    height: calc(100vh - 4rem);   /* 4 rem = the top padding you gave .section-one */
+    overflow-y: auto;
+    background: black;
+    border-radius: 8px;
+    color: #fff;
+
+  }
+
+  .scroll-column::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+
+  /* fill-height demo blocks so you have to scroll */
+  .scroll-item {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+  }

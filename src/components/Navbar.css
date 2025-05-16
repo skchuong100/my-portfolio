@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
     font-family: "Tourney", sans-serif;
     background-size: 100% 100%; /* Gradually expand the background to cover the text */
     text-decoration: none; /* Remove underline */
-    margin-left: 60px;
+    margin-left: 20px;
 }
 
 /* Ensure the logo link doesn’t get underlined on hover */

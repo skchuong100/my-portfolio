@@ -16,3 +16,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Lock the whole page to the viewport height */
+html,
+body {
+  height: 100%;
+  overflow: hidden;   /* ← prevents document scroll */
+}
+
+#root,             /* CRA / Vite root div */
+.App {              /* your top-level component wrapper */
+  height: 100%;
+}
