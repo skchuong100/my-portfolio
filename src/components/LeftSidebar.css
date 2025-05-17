@@ -1,18 +1,19 @@
 .left-sidebar {
     position: fixed;
     left: 0;
-    top: 330px;
-    height: 100vh; /* Make the sidebar take up the full height of the viewport */
-    width: 150px; /* Width of the sidebar */
+    top: 330px;    /* wherever you want the sidebar to start */
+    bottom: 0;     /* always touch the bottom */
+    width: 150px;  /* keep your width */
     display: flex;
-    align-items: center; /* Center the gradient line vertically */
-    justify-content: center; /* Center the gradient line horizontally */
-    z-index: 999; /* Ensure the sidebar is on top of other elements */
-    background-color: transparent; /* If you want a transparent sidebar */
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background-color: transparent;
 }
 
+/* Gradient line remains unchanged */
 .gradient-line {
-    width: 3px; /* Width of the gradient line */
-    height: 150px; /* Height of the gradient line */
-    background: linear-gradient(#7579FA, #FBAE6A); /* Gradient from top to bottom */
+    width: 3px;
+    height: 150px;
+    background: linear-gradient(#7579FA, #FBAE6A);
 }

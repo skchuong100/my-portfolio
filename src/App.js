@@ -5,6 +5,9 @@ import Sidebars from './components/Sidebars';
 import './components/FirstSection.css';
 import './App.css';
 
+import spencerPhoto from './assets/spencerPhoto.PNG';
+import gradientImage from './assets/gradient1.png';
+
 /**
  * Single‑section demo with a mini‑page column that scrolls even when the
  * cursor is outside it.  We now animate the wheel movement so the scroll
@@ -53,7 +56,21 @@ function App() {
 
       <section id="section-one" className="section-one">
         {/* empty left half for now */}
-        <div className="left-half" />
+        <div className="left-half">
+          <div className="pic-gradient">
+            <img
+              src={gradientImage}
+              alt="Gradient Background"
+              className="gradient-bg"
+            />
+            <img
+              src={spencerPhoto}
+              alt="Spencer Chuong"
+              className="profile-pic-overlay"
+            />
+          </div>
+        </div>
+
 
         {/* right half centres the mini page */}
         <div className="right-half">
