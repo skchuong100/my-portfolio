@@ -5,21 +5,49 @@
     font-style: normal;
 }
 
+@font-face {
+  font-family: 'DMMono-Medium';
+  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* 3) Text block under the image */
 .intro-text {
-    font-family: "Bungee", monospace;
-    font-size: 50px;
-    font-weight: 400;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns text to the left */
+  font-family: "DMMono-Medium", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* children stay left-aligned */
+  align-self: center;       /* center THIS block under the picture */
+  max-width: 30rem;         /* optional line-length constraint */
+  margin-top: 7rem;         /* space from .pic-gradient */
+  /* completely remove any transform or crazy margins */
 }
 
-.hello-text {
-    color: white;
-}
 
+
+/* I’M SPENCER CHUONG */
 .name-text {
-    color: #7579FA;
+  font-size: 3rem;
+  color: #7579FA;
+  margin: 0.25rem 0;
+}
+
+/* subtitle & description */
+.subtitle-text {
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+.subtitle-text .highlight {
+  color: #FBAE6A;
+}
+.description-text {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.4;
+  margin: 0;                /* no extra top/bottom margins */
 }
 
 /* ── split 50-50 viewport ─────────────────────────────────── */
@@ -33,6 +61,17 @@
     inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
     overflow: hidden;   /* nothing inside can leak out */
   }
+
+.left-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* center children horizontally */
+  justify-content: flex-start; /* let us push the blob up */
+  margin-top: -10rem;      /* clear your navbar */
+  padding-top: 10rem;
+  overflow: hidden;
+
+}
 
   /* right column flex-centres its content */
   .right-half {
@@ -58,7 +97,7 @@
 
   /* fill-height demo blocks so you have to scroll */
   .scroll-item {
-    /*height: 20vh;*/ /*Adjust spacing between content*/
+    height: 50vh; /*Adjust spacing between content*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,33 +108,29 @@
 
 .pic-gradient {
   position: relative;
-  width: 300px;    /* shrink-to-fit your photo or adjust as needed */
-  height: 300px;   /* same as above; you’ll offset the gradient anyway */
-  margin: -20rem auto auto;
-
-  /* allow the gradient shape to stick out beyond this box */
-  overflow: visible;
+  width: 400px;           /* adjust to your taste */
+  height: 400px;          /* same as above */
+  margin: 0 auto;         /* center it */
+  overflow: visible;      /* allow the blob to peek out */
 }
 
 .pic-gradient .gradient-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 350px;          /* make it bigger than the wrapper */
-  height: auto;
+  width: 500px;           /* larger than wrapper */
   transform: translate(-50%, -50%);
-  z-index: 1;            /* put it behind the photo */
-
+  z-index: 1;
 }
 
+/* 2b) your portrait on top */
 .pic-gradient .profile-pic-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 250px;          /* your desired photo size */
-  height: auto;
+  width: 400px;           /* desired photo size */
   transform: translate(-50%, -50%);
-  z-index: 2;            /* on top of the gradient */
-  border-radius: 25%;    /* if you want rounded corners on the photo */
+  z-index: 2;
+  border-radius: 25%;     /* optional rounding */
   object-fit: cover;
 }

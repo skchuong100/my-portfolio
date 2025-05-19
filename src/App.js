@@ -69,6 +69,15 @@ function App() {
               className="profile-pic-overlay"
             />
           </div>
+          <div className="intro-text">
+            <h1 className="name-text">Spencer Chuong</h1>
+            <h5 className="subtitle-text">
+              A driven <span className="highlight">computer science student</span>
+            </h5>
+            <p className="description-text">
+              Making one project at a time for all
+            </p>
+          </div>
         </div>
 
 
