@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'DMMono-Medium';
+  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Shared sidebar layout for both left and right */
 .sidebar {
     position: fixed;
@@ -46,6 +53,7 @@
     align-items: center;
     margin-top: 509px; /* Reduced margin between the email container and the bar */
 
+
 }
 
 /* Gradient line - ensure it's aligned properly */
@@ -58,7 +66,7 @@
 /* Email text in the right sidebar */
 .email-text {
     font-size: 16px;
-    font-weight: 900; /* Regular weight */
+    font-weight: 100; /* Regular weight */
     color: white;
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -67,7 +75,8 @@
     transition: color 0.3s ease;
     margin-bottom: 10px; /* Fine-tune spacing between email text and the bar */
     margin-left: 7px;
-    font-family: "Roboto Mono", monospace;
+    font-family: "DMMono-Medium", monospace;
+
 
 }
 
@@ -75,7 +84,7 @@
     background: linear-gradient(145deg, #7579FA, #FBAE6A);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Make text transparent to show the gradient */
-    font-weight: 700; /* Make the font bold when hovered */
+    font-weight: 100; /* Make the font bold when hovered */
 }
 
 
