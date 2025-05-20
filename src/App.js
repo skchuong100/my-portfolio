@@ -85,7 +85,13 @@ function App() {
         {/* right half centres the mini page */}
         <div className="right-half">
           <div className="scroll-column" ref={scrollRef}>
-          <div id="test1" className="scroll-item">Test 1</div>
+          <div id="about-me" className="about-me-section">
+            <h2 className="about-me-title">About me</h2>
+            <p className="about-me-text">
+              {/* Replace the text below with your actual paragraph */}
+              I’m Spencer Chuong, an aspiring software developer with a passion for film photography and crafting clean, performant front-end experiences…
+            </p>
+          </div>
           <div id="test2" className="scroll-item">Test 2</div>
           <div id="test3" className="scroll-item">Test 3</div>
           </div>

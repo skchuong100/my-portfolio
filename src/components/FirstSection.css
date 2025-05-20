@@ -90,7 +90,7 @@
 
   /* fill-height demo blocks so you have to scroll */
   .scroll-item {
-    height: 50vh; /*Adjust spacing between content*/
+    height: 200vh; /*Adjust spacing between content*/
     display: flex;
 
     justify-content: center;
@@ -128,4 +128,20 @@
   z-index: 2;
   border-radius: 25%;     /* optional rounding */
   object-fit: cover;
+}
+
+
+.about-me-section {
+  text-align: left;
+  font-family: "DMMono-Medium", monospace;
+}
+
+.about-me-title {
+  color: #7579FA;
+  margin-bottom: 0.5rem;
+}
+
+.about-me-text {
+  color: #ffffff;
+  line-height: 1.5;
 }
