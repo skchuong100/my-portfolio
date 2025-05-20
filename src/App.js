@@ -84,9 +84,9 @@ function App() {
         {/* right half centres the mini page */}
         <div className="right-half">
           <div className="scroll-column" ref={scrollRef}>
-            <div className="scroll-item">Test 1</div>
-            <div className="scroll-item">Test 2</div>
-            <div className="scroll-item">Test 3</div>
+          <div id="test1" className="scroll-item">Test 1</div>
+          <div id="test2" className="scroll-item">Test 2</div>
+          <div id="test3" className="scroll-item">Test 3</div>
           </div>
         </div>
       </section>
