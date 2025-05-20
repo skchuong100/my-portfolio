@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'DMMono-Medium';
+  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -30,12 +37,11 @@ body::-webkit-scrollbar {
     font-size: 50px;
     font-weight: 400; /* Regular weight */
     color: #7579FA; /* Matches the second and fourth section color */
-
+    font-family: "Tourney", sans-serif;
     background-size: 100% 100%; /* Gradually expand the background to cover the text */
     text-decoration: none; /* Remove underline */
-    margin-left: 60px;
-    font-family: "Roboto Mono", monospace;
 
+    margin-left: 20px;
 }
 
 /* Ensure the logo link doesn’t get underlined on hover */
@@ -51,16 +57,18 @@ body::-webkit-scrollbar {
     display: flex;
     gap: 50px; /* Space between links */
     padding-right: 130px; /* Additional padding for the links on the right */
-    font-family: "Roboto Mono", monospace;
+    font-family: "DMMono-Medium", monospace;
+
 }
 
 .navbar-right a {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    font-weight: 400; /* Regular weight */
-    font-family: "Roboto Mono", monospace;
-    transition: background-size 0.5s ease, color 0.5s ease;
+    font-weight: 100; /* Regular weight */
+    font-family: "DMMono-Medium", monospace;
+
+    transition: color 0.3s ease;
     background: none; /* No background by default */
     background-clip: text;
     -webkit-background-clip: text; /* Safari/Webkit support */
@@ -68,22 +76,16 @@ body::-webkit-scrollbar {
 }
 
 /* Hover effect with gradient */
-.navbar-right a:hover {
-    font-size: 16px;
-    font-weight: 900; /* Regular weight */
-    background-size: 100% 100%; /* Gradually expand the background to cover the text */
-    background: linear-gradient(90deg, #7579FA, #FBAE6A);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Transparent to show gradient */
-}
 
+.navbar-right a:hover,
+.navbar-right a.active {
+  background: linear-gradient(145deg, #7579FA, #FBAE6A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .navbar-right .resume-link {
     color: #7579FA; /* Distinctive color for Resume link */
 
 
-}
-
-.navbar-right a:hover {
-    text-decoration: underline;
 }

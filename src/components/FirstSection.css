@@ -1,121 +1,131 @@
 @font-face {
-    font-family: 'Bungee';
-    src: url('../assets/fonts/Bungee-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'DMMono-Medium';
+  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+
+/* 3) Text block under the image */
 .intro-text {
-    font-family: "Bungee", monospace;
-    font-size: 50px;
-    font-weight: 400;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Aligns text to the left */
-    line-height: 65px;
+  font-family: "DMMono-Medium", monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* children stay left-aligned */
+  align-self: center;       /* center THIS block under the picture */
+  max-width: 30rem;         /* optional line-length constraint */
+  margin-top: 7rem;         /* space from .pic-gradient */
+  /* completely remove any transform or crazy margins */
 }
 
-.hello-text {
-    color: white;
-}
 
+
+/* I’M SPENCER CHUONG */
 .name-text {
-    color: #7579FA;
+  font-size: 3rem;
+  color: #7579FA;
+  margin: 0.25rem 0;
 }
 
-/* "A driven..." text */
-.intro-subtext {
-    font-family: "Roboto Mono", monospace;
-    font-size: 18px;
-    color: white;
-    margin-bottom: 10px;
-    text-align: left; /* Ensure text is left-aligned */
-    width: 100%; /* Ensure that this block takes full width within text-container */
+/* subtitle & description */
+.subtitle-text {
+  font-size: 1.25rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+.subtitle-text .highlight {
+  color: #FBAE6A;
+}
+.description-text {
+  font-size: 1rem;
+  color: #fff;
+  line-height: 1.4;
+  margin: 0;                /* no extra top/bottom margins */
 }
 
+/* ── split 50-50 viewport ─────────────────────────────────── */
+.section-one {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* left | right */
+    background: #0B080E;
+    padding-top: 4rem;                /* keep clear of fixed navbar */
+    position: fixed;    /* stretch across the screen */
+    inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
+    overflow: hidden;   /* nothing inside can leak out */
+  }
 
-/* Parent container to hold text and images side by side */
-.intro-container {
+.left-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* center children horizontally */
+  justify-content: flex-start; /* let us push the blob up */
+  margin-top: -10rem;      /* clear your navbar */
+  padding-top: 10rem;
+  overflow: hidden;
+
+}
+
+  /* right column flex-centres its content */
+  .right-half {
     display: flex;
-    flex-direction: row; /* Align items in a row */
-    align-items: center; /* Vertically align the items to the center */
-    justify-content: space-between; /* Space between the text and image */
-    width: 100%; /* Take up full width */
-    margin-top: 20px;
-    position: relative; /* Enable positioning for child elements */
-    padding: 20px; /* Add some padding to avoid touching edges */
-}
+    justify-content: center;
+    align-items: stretch;              /* vertical centre */
+  }
 
+  /* mini-page column */
+  .scroll-column {
+    width: min(500px, 90%);
+    height: calc(100vh - 4rem);   /* 4 rem = the top padding you gave .section-one */
+    overflow-y: auto;
+    background: Green;
+    border-radius: 8px;
+    color: #fff;
 
-/* Text container styling */
-.text-container {
-    flex: 1; /* Allows the text container to take as much space as needed */
-    max-width: 50%; /* Optional: limit the width of the text to 50% */
+  }
+
+  .scroll-column::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+
+  /* fill-height demo blocks so you have to scroll */
+  .scroll-item {
+    height: 50vh; /*Adjust spacing between content*/
     display: flex;
-    flex-direction: column; /* Stack the text elements vertically */
-    align-items: flex-start; /* Align text to the left */
-    text-align: left; /* Explicitly make sure text is left-aligned */
-    border: 1px solid blue;
-}
 
-/* Rotating text styles */
-.rotating-text {
-    color: #FBAE6A;
-    font-weight: bold;
-    padding: 0 10px; /* Padding to keep text width consistent */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth fade and movement */
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Fade-out and fade-in styles for smooth transition */
-.fade-out {
-    opacity: 0;
-    transform: translateY(20px); /* Move text slightly down while fading out */
-}
-
-.fade-in {
-    opacity: 1;
-    transform: translateY(0); /* Bring text back to its original position */
-}
-
-
-/* Paragraph styling */
-.intro-paragraph {
-    font-family: "Roboto Mono", monospace;
-    font-size: 16px;
-    color: white;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0;
-    text-align: left;
-}
-
-
-/* Image container styling */
-.image-container {
-    position: relative; /* Allows overlapping images */
-    flex: 1; /* Allows the image container to take as much space as needed */
-    max-width: 50%; /* Optional: limit the width of the image container to 50% */
-    display: flex;
-    justify-content: center; /* Center image inside the container */
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-    border: 1px solid red;
+    font-size: 2rem;
+  }
+
+/* in FirstSection.css */
+
+.pic-gradient {
+  position: relative;
+  width: 400px;           /* adjust to your taste */
+  height: 400px;          /* same as above */
+  margin: 0 auto;         /* center it */
+  overflow: visible;      /* allow the blob to peek out */
 }
 
-/* Color gradient image */
-.color-gradient {
-    position: absolute;
-    top:-30%;
-    left: 0;
-    width: 100%; /* Make it cover the entire container */
-    z-index: 1; /* Lower z-index to stay behind */
+.pic-gradient .gradient-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;           /* larger than wrapper */
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-/* Spencer image */
-.spencer-image {
-    position: relative;
-    width: 70%; /* Ensure it stays within the container */
-    z-index: 2; /* Higher z-index to be in front */
+
+/* 2b) your portrait on top */
+.pic-gradient .profile-pic-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;           /* desired photo size */
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 25%;     /* optional rounding */
+  object-fit: cover;
 }
