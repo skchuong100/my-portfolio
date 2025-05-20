@@ -20,7 +20,6 @@ code {
 html,
 body {
   height: 100%;
-  overflow: hidden;   /* ← prevents document scroll */
 }
 
 #root,             /* CRA / Vite root div */

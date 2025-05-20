@@ -5,6 +5,152 @@
   font-style: normal;
 }
 
+:root {
+  --color-bg: #151515;
+  --color-primary: #7579FA;
+  --color-accent: #FFA500; /* or your orange */
+  --color-text: #FFFFFF;
+  --font-mono: "DMMono-Medium", monospace;
+  --breakpoint-md: 768px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HERO AREA */
+.hero {
+  position: relative;
+  width: 100%;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+.hero .background-shape {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #7579FA, #FFAB66);
+  border-radius: 50% / 40%;
+  filter: blur(40px);
+}
+.hero img.portrait {
+  position: relative;
+  width: 50%;
+  max-width: 200px;
+  border-radius: 50%;
+  z-index: 1;
+  margin: 0 auto;
+}
+
+/* ——— Mobile-first defaults ——— */
+.section-one {
+  /* stack everything */
+  display: block;
+  height: auto;
+  position: static;
+  padding-top: 1rem;              /* if you need safe-space under a fixed navbar */
+  background: var(--color-bg);
+}
+
+.left-half {
+  margin-top: 0;                  /* reset desktop offsets */
+  padding: 50;
+  margin-left: 50;
+  display: block;
+}
+
+.right-half {
+  margin-top: 2rem;               /* breathe room before your “About me” */
+  display: block;
+}
+
+.scroll-column {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto 2rem;            /* center it and give bottom spacing */
+  height: auto;
+  overflow: visible;
+  background: none;                /* or your card’s bg-color instead of solid green */
+  border-radius: 8px;
+}
+
+
+/* NAME & TAGLINE */
+.hero h1 {
+  margin: 1rem 0 0.5rem;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+.hero .subtitle {
+  font-size: 1rem;
+}
+.hero .subtitle .highlight {
+  color: var(--color-accent);
+}
+.hero .tagline {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* SOCIAL ICONS */
+.social-row {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.social-row a {
+  font-size: 1.5rem; /* or SVG size */
+}
+
+/* SECTION HEADINGS */
+.section-title {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  text-align: left;
+}
+
+/* CONTENT CARDS */
+.card {
+  width: 90%;
+  max-width: 400px;
+  background: #252525; /* or purple for “Experience” */
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+.card.experience {
+  background: var(--color-primary);
+  color: var(--color-text);
+}
+/* Within each card, your monospace text just flows naturally */
+
+@media (min-width: 768px) {
+  .App {
+    flex-direction: row;
+  }
+  /* show sidebars, navbars here */
+  .scroll-column {
+    height: 100vh;
+    overflow-y: auto;
+    width: 50%;
+  }
+  /* you can also adjust .hero img size, card width, font-sizes, etc. */
+}
+
 
 /* 3) Text block under the image */
 .intro-text {
@@ -52,7 +198,6 @@
     padding-top: 4rem;                /* keep clear of fixed navbar */
     position: fixed;    /* stretch across the screen */
     inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
-    overflow: hidden;   /* nothing inside can leak out */
   }
 
 .left-half {
@@ -62,7 +207,6 @@
   justify-content: flex-start; /* let us push the blob up */
   margin-top: -10rem;      /* clear your navbar */
   padding-top: 10rem;
-  overflow: hidden;
 
 }
 
@@ -123,7 +267,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;           /* desired photo size */
+  width: 350px;           /* desired photo size */
   transform: translate(-50%, -50%);
   z-index: 2;
   border-radius: 25%;     /* optional rounding */

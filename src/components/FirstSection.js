@@ -1,56 +1,64 @@
-import React, { useState, useEffect } from 'react';
+// src/FirstSection.js
+import React from 'react';
 import './FirstSection.css';
-import colorGradient from '../assets/color_gradient.png';
-import spencerImage from '../assets/spencer_image.png';
-const FirstSection = () => {
-    const phrases = [
-        "computer science graduate",
-        "aspiring software developer",
-        "full stack developer",
-        "front-end developer"
-    ];
-
-    const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-    const [isFading, setIsFading] = useState(false);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setIsFading(true); // Start fade-out effect
-            setTimeout(() => {
-                setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-                setIsFading(false); // Start fade-in effect after phrase changes
-            }, 500); // Delay for fade-out duration
-        }, 3000); // Change phrase every 3 seconds
-
-        return () => clearInterval(intervalId); // Clean up interval on component unmount
-    }, [phrases.length]);
-
-    return (
-        <div className="intro-container">
-            {/* Text Container */}
-            <div className="text-container">
-                <div className="intro-text">
-                    <span className="hello-text">Hello,</span>
-                    <span className="name-text">I'm Spencer Chuong</span>
-                </div>
-                <div className="intro-subtext">
-                    A driven <span className={`rotating-text ${isFading ? "fade-out" : "fade-in"}`}>
-                        {phrases[currentPhraseIndex]}
-                    </span>
-                </div>
-                <p className="intro-paragraph">
-                    I am an aspiring software engineer in the making who is currently making small projects that would help benefit others.
-                </p>
-            </div>
-
-            {/* Image Container */}
-            <div className="image-container">
-                <img src={colorGradient} alt="Color Gradient" className="color-gradient" />
-                <img src={spencerImage} alt="Spencer Chuong" className="spencer-image" />
-            </div>
+import githubIcon    from '../assets/github-signWhite.png';
+import instagramIcon from '../assets/instagramWhite.png';
+import linkedinIcon  from '../assets/linkedinWhite.png';
+import mailIcon      from '../assets/mailWhite.png';
+import spencerPhoto from '../assets/spencerPhoto.PNG';
+import gradientImage from '../assets/gradient1.png';
+export default function FirstSection() {
+  return (
+    <section className="section-one">
+      <div className="left-half">
+        <div className="pic-gradient">
+            <img
+              src={gradientImage}
+              alt="Gradient Background"
+              className="gradient-bg"
+            />
+            <img
+              src={spencerPhoto}
+              alt="Spencer Chuong"
+              className="profile-pic-overlay"
+            />
+        </div>
+        {/* hero image, name, tagline */}
+        <div className="hero">
+          {/* background-shape + <img className="portrait" /> */}
+          <h1>SPENCER CHUONG</h1>
+          <p className="subtitle">
+            A driven <span className="highlight">computer science</span> student
+          </p>
+          <p className="tagline">Making one project at a time</p>
         </div>
 
-    );
-};
+        <div className="social-row">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener">
+              <img src={githubIcon} alt="GitHub" />
+            </a>
+            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">
+              <img src={instagramIcon} alt="Instagram" />
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
+              <img src={linkedinIcon} alt="LinkedIn" />
+            </a>
+            <a href="mailto:spencerchuong0@gmail.com">
+              <img src={mailIcon} alt="Email" />
+            </a>
+        </div>
+        {/* intro text */}
+        <div className="intro-text">
+          <p className="intro-paragraph">
+            I’m Spencer Chuong, a recent computer science graduate…
+          </p>
 
-export default FirstSection;
+        </div>
+      </div>
+
+      <div className="right-half">
+        {/* this will become your scroll-column container */}
+      </div>
+    </section>
+  );
+}
