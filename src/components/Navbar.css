@@ -40,6 +40,7 @@ body::-webkit-scrollbar {
     font-family: "Tourney", sans-serif;
     background-size: 100% 100%; /* Gradually expand the background to cover the text */
     text-decoration: none; /* Remove underline */
+
     margin-left: 20px;
 }
 
@@ -48,6 +49,7 @@ body::-webkit-scrollbar {
     text-decoration: none; /* No underline on hover */
     font-weight: 900; /* Regular weight */
     background-size: 100% 100%; /* Gradually expand the background to cover the text */
+
 }
 
 

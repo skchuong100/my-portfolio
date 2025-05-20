@@ -92,6 +92,7 @@
   .scroll-item {
     height: 50vh; /*Adjust spacing between content*/
     display: flex;
+
     justify-content: center;
     align-items: center;
     font-size: 2rem;
@@ -115,6 +116,7 @@
   transform: translate(-50%, -50%);
   z-index: 1;
 }
+
 
 /* 2b) your portrait on top */
 .pic-gradient .profile-pic-overlay {

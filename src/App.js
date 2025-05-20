@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebars from './components/Sidebars';
 
+
 import './components/FirstSection.css';
 import './App.css';
 
