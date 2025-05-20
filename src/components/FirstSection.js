@@ -48,16 +48,24 @@ export default function FirstSection() {
             </a>
         </div>
         {/* intro text */}
-        <div className="intro-text">
-          <p className="intro-paragraph">
-            I’m Spencer Chuong, a recent computer science graduate…
-          </p>
 
-        </div>
       </div>
 
       <div className="right-half">
-        {/* this will become your scroll-column container */}
+        <div id="about-me" className="about-me-section">
+          <h2 className="about-me-title">About me</h2>
+          <div className="about-me-content">
+            <p className="about-me-text">
+              I’m a recent computer science graduate from California State University, Long Beach. I’m passionate about making cool and niche programs with excellent user interfaces.
+            </p>
+            <p className="about-me-text">
+              Currently, I’m open to any position in full stack development, ranging from backend to front end. I am also studying other aspects of computer science on the side for functionalities in my projects.
+            </p>
+            <p className="about-me-text">
+              In my spare time, I love to do photography, watch films/shows, and read.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

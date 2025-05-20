@@ -1,6 +1,9 @@
+/* FirstSection.css */
+
+/* ——— Font & variables ——— */
 @font-face {
   font-family: 'DMMono-Medium';
-  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  src: url('../assets/fonts/DMMono-Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -8,284 +11,149 @@
 :root {
   --color-bg: #151515;
   --color-primary: #7579FA;
-  --color-accent: #FFA500; /* or your orange */
+  --color-accent: #FFA500;
   --color-text: #FFFFFF;
-  --font-mono: "DMMono-Medium", monospace;
-  --breakpoint-md: 768px;
 }
 
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-mono);
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* HERO AREA */
-.hero {
-  position: relative;
-  width: 100%;
-  padding-top: 1.5rem;
-  text-align: center;
-}
-.hero .background-shape {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  aspect-ratio: 3/4;
-  background: linear-gradient(135deg, #7579FA, #FFAB66);
-  border-radius: 50% / 40%;
-  filter: blur(40px);
-}
-.hero img.portrait {
-  position: relative;
-  width: 50%;
-  max-width: 200px;
-  border-radius: 50%;
-  z-index: 1;
-  margin: 0 auto;
-}
-
-/* ——— Mobile-first defaults ——— */
+/* ——— Mobile-first layout ——— */
 .section-one {
-  /* stack everything */
   display: block;
-  height: auto;
   position: static;
-  padding-top: 1rem;              /* if you need safe-space under a fixed navbar */
+  padding-top: 1rem;
   background: var(--color-bg);
 }
 
-.left-half {
-  margin-top: 0;                  /* reset desktop offsets */
-  padding: 50;
-  margin-left: 50;
-  display: block;
-}
-
+.left-half,
 .right-half {
-  margin-top: 2rem;               /* breathe room before your “About me” */
   display: block;
-}
-
-.scroll-column {
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto 2rem;            /* center it and give bottom spacing */
-  height: auto;
-  overflow: visible;
-  background: none;                /* or your card’s bg-color instead of solid green */
-  border-radius: 8px;
-}
-
-
-/* NAME & TAGLINE */
-.hero h1 {
-  margin: 1rem 0 0.5rem;
-  font-size: 2rem;
-  letter-spacing: 0.05em;
-  color: var(--color-primary);
-}
-.hero .subtitle {
-  font-size: 1rem;
-}
-.hero .subtitle .highlight {
-  color: var(--color-accent);
-}
-.hero .tagline {
-  margin-top: 0.25rem;
-  font-size: 0.85rem;
-}
-
-/* SOCIAL ICONS */
-.social-row {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-.social-row a {
-  font-size: 1.5rem; /* or SVG size */
-}
-
-/* SECTION HEADINGS */
-.section-title {
   width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  color: var(--color-primary);
-  text-align: left;
 }
 
-/* CONTENT CARDS */
-.card {
-  width: 90%;
-  max-width: 400px;
-  background: #252525; /* or purple for “Experience” */
-  border-radius: 1rem;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-}
-.card.experience {
-  background: var(--color-primary);
-  color: var(--color-text);
-}
-/* Within each card, your monospace text just flows naturally */
-
-@media (min-width: 768px) {
-  .App {
-    flex-direction: row;
-  }
-  /* show sidebars, navbars here */
-  .scroll-column {
-    height: 100vh;
-    overflow-y: auto;
-    width: 50%;
-  }
-  /* you can also adjust .hero img size, card width, font-sizes, etc. */
-}
-
-
-/* 3) Text block under the image */
-.intro-text {
-  font-family: "DMMono-Medium", monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  /* children stay left-aligned */
-  align-self: center;       /* center THIS block under the picture */
-  max-width: 30rem;         /* optional line-length constraint */
-  margin-top: 7rem;         /* space from .pic-gradient */
-  /* completely remove any transform or crazy margins */
-}
-
-
-
-/* I’M SPENCER CHUONG */
-.name-text {
-  font-size: 3rem;
-  color: #7579FA;
-  margin: 0.25rem 0;
-}
-
-/* subtitle & description */
-.subtitle-text {
-  font-size: 1.25rem;
-  color: #fff;
-  margin: 0.5rem 0;
-}
-.subtitle-text .highlight {
-  color: #FBAE6A;
-}
-.description-text {
-  font-size: 1rem;
-  color: #fff;
-  line-height: 1.4;
-  margin: 0;                /* no extra top/bottom margins */
-}
-
-/* ── split 50-50 viewport ─────────────────────────────────── */
-.section-one {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;   /* left | right */
-    background: #0B080E;
-    padding-top: 4rem;                /* keep clear of fixed navbar */
-    position: fixed;    /* stretch across the screen */
-    inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
-  }
-
-.left-half {
-  display: flex;
-  flex-direction: column;
-  align-items: center;    /* center children horizontally */
-  justify-content: flex-start; /* let us push the blob up */
-  margin-top: -10rem;      /* clear your navbar */
-  padding-top: 10rem;
-
-}
-
-  /* right column flex-centres its content */
-  .right-half {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;              /* vertical centre */
-  }
-
-  /* mini-page column */
-  .scroll-column {
-    width: min(500px, 90%);
-    height: calc(100vh - 4rem);   /* 4 rem = the top padding you gave .section-one */
-    overflow-y: auto;
-    background: Green;
-    border-radius: 8px;
-    color: #fff;
-
-  }
-
-  .scroll-column::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari, Opera */
-  }
-
-  /* fill-height demo blocks so you have to scroll */
-  .scroll-item {
-    height: 200vh; /*Adjust spacing between content*/
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-  }
-
-/* in FirstSection.css */
-
+/* ——— Blob + portrait ——— */
 .pic-gradient {
   position: relative;
-  width: 400px;           /* adjust to your taste */
-  height: 400px;          /* same as above */
-  margin: 0 auto;         /* center it */
-  overflow: visible;      /* allow the blob to peek out */
+  width: 80%;
+  max-width: 400px;
+  aspect-ratio: 1/1;
+  margin: 0 auto 2rem;
+  overflow: visible;
+  margin-top: 5rem;
 }
 
 .pic-gradient .gradient-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px;           /* larger than wrapper */
+  width: 100%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
-
-/* 2b) your portrait on top */
 .pic-gradient .profile-pic-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 350px;           /* desired photo size */
+  width: 80%;
+  max-width: 350px;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  border-radius: 25%;     /* optional rounding */
+  border-radius: 50%;
   object-fit: cover;
+  z-index: 2;
 }
 
+/* ——— Hero text ——— */
+.hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 
+.hero h1 {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.hero .subtitle .highlight {
+  color: var(--color-accent);
+}
+
+.hero .tagline {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+/* ——— Social icons ——— */
+.social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 1rem 0;
+}
+
+.social-row img {
+  width: 1.5rem;
+  height: auto;
+}
+
+/* ——— About Me ——— */
 .about-me-section {
-  text-align: left;
-  font-family: "DMMono-Medium", monospace;
+  padding: 0 1rem 2rem;
 }
 
 .about-me-title {
-  color: #7579FA;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.about-me-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .about-me-text {
-  color: #ffffff;
+  color: var(--color-text);
   line-height: 1.5;
+  margin: 0;
+}
+
+/* ——— Desktop enhancements (≥768px) ——— */
+@media (min-width: 768px) {
+  .section-one {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    padding-top: 4rem; /* match your navbar height */
+  }
+
+  .left-half {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-top: 10rem; /* pushes the blob up into the safe-area */
+  }
+
+  .right-half {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .about-me-section {
+    max-width: 400px;
+    padding: 2rem;
+  }
 }
