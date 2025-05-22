@@ -28,7 +28,7 @@ export default function FirstSection() {
           {/* background-shape + <img className="portrait" /> */}
           <h1>SPENCER CHUONG</h1>
           <p className="subtitle">
-            A driven <span className="highlight">computer science</span> student
+            A driven <span className="highlight">computer science student</span>
           </p>
           <p className="tagline">Making one project at a time</p>
         </div>
@@ -53,7 +53,7 @@ export default function FirstSection() {
 
       <div className="right-half">
         <div id="about-me" className="about-me-section">
-          <h2 className="about-me-title">About me</h2>
+          <h2 className="section-title">About me</h2>
           <div className="about-me-content">
             <p className="about-me-text">
               I’m a recent computer science graduate from California State University, Long Beach. I’m passionate about making cool and niche programs with excellent user interfaces.
@@ -66,7 +66,34 @@ export default function FirstSection() {
             </p>
           </div>
         </div>
-      </div>
+        <div id="experience" className="experience-section">
+    <h2 className="section-title">Experience</h2>
+    <div className="experience-card">
+      <h3 className="job-title">Patent Examiner</h3>
+      <p className="job-dates">2024 – 2025</p>
+      <p className="job-description">
+        Examined AI/ML patent applications to see if it meets patentability and novelty.
+        In giving a non-final rejection, I work with the patent attorney to explain the
+        rejection and discuss amendments to the claimed invention.
+      </p>
+    </div>
+    </div>
+        {/* — Projects — */}
+        <div id="projects" className="projects-section">
+          <h2 className="section-title">Projects</h2>
+          <div className="project-card">
+            <h3 className="project-name">InterMeet</h3>
+            <p className="project-description">
+              An Android-based matching app where people connect with each other and are given
+              a map of places and events to meet at. Our motto is “We INTERmediate the MEET”.
+            </p>
+            <div className="project-tags">
+              <span className="tag kotlin">Kotlin</span>
+              <span className="tag maps-api">Google Maps API</span>
+            </div>
+          </div>
+        </div>
+    </div>
     </section>
   );
 }
