@@ -23,9 +23,9 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: transparent; /* Matches your first and third section color */
+    background-color: #1E1E1E; /* Matches your first and third section color */
     color: white;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px; /* General padding for the navbar to create space on both sides */
@@ -79,4 +79,10 @@ body::-webkit-scrollbar {
     color: #7579FA; /* Distinctive color for Resume link */
 
 
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    display: flex; /* or whatever your desktop layout uses */
+  }
 }

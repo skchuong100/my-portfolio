@@ -17,9 +17,13 @@ import FirstSection from './components/FirstSection';
  */
 function App() {
 
+
+
   return (
     <div className="App">
+      <Sidebars/>
       <FirstSection />
+      <Navbar/>
 
     </div>
   );
