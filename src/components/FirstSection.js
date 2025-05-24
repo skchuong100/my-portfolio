@@ -51,7 +51,7 @@ export default function FirstSection() {
 
       </div>
 
-      <div className="right-half">
+      <div className="right-half scroll-column">
         <div id="about-me" className="about-me-section">
           <h2 className="section-title">About me</h2>
           <div className="about-me-content">
@@ -67,17 +67,17 @@ export default function FirstSection() {
           </div>
         </div>
         <div id="experience" className="experience-section">
-    <h2 className="section-title">Experience</h2>
-    <div className="experience-card">
-      <h3 className="job-title">Patent Examiner</h3>
-      <p className="job-dates">2024 – 2025</p>
-      <p className="job-description">
-        Examined AI/ML patent applications to see if it meets patentability and novelty.
-        In giving a non-final rejection, I work with the patent attorney to explain the
-        rejection and discuss amendments to the claimed invention.
-      </p>
-    </div>
-    </div>
+          <h2 className="section-title">Experience</h2>
+          <div className="experience-card">
+            <h3 className="job-title">Patent Examiner</h3>
+            <p className="job-dates">2024 – 2025</p>
+            <p className="job-description">
+              Examined AI/ML patent applications to see if it meets patentability and novelty.
+              In giving a non-final rejection, I work with the patent attorney to explain the
+              rejection and discuss amendments to the claimed invention.
+            </p>
+          </div>
+        </div>
         {/* — Projects — */}
         <div id="projects" className="projects-section">
           <h2 className="section-title">Projects</h2>
@@ -88,12 +88,25 @@ export default function FirstSection() {
               a map of places and events to meet at. Our motto is “We INTERmediate the MEET”.
             </p>
             <div className="project-tags">
-              <span className="tag kotlin">Kotlin</span>
-              <span className="tag maps-api">Google Maps API</span>
+              <span className="tag a">Kotlin</span>
+              <span className="tag b">Google Maps API</span>
+              <span className="tag c">Firebase</span>
             </div>
           </div>
-        </div>
-    </div>
+          <div className="project-card">
+            <h3 className="project-name">Food Decider</h3>
+            <p className="project-description">
+              Programmed a GUI that displays restaurants and their details based on user preferences.
+              Utilized Google Maps API to gather information about the restaurant
+            </p>
+            <div className="project-tags">
+              <span className="tag a">Python</span>
+              <span className="tag b">Google Maps API</span>
+            </div>
+          </div>
+          </div>
+
+      </div>
     </section>
   );
 }

@@ -1,89 +1,78 @@
-
+// Navbar.js
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import ResumePDF from '../assets/Spencer Chuong\'s Resume.pdf';
 
-const Navbar = () => {
-  const [activeSection, setActiveSection] = useState(null);
+export default function Navbar() {
+  const [activeSection, setActiveSection] = useState('about-me');
 
-  // onClick still scrolls the mini‐page
-const handleMiniPageScroll = (e, targetId) => {
-  e.preventDefault();
-  const container = document.querySelector('.scroll-column');
-  const target    = document.getElementById(targetId);
-  if (container && target) {
-    const offset = target.offsetTop - container.offsetTop;
-    container.scrollTo({ top: offset, behavior: 'smooth' });
-    setActiveSection(targetId);    // ← highlight right away
-  }
-};
-
-
-  // watch the scroll‐column’s scroll position
-useEffect(() => {
-  const container = document.querySelector('.scroll-column');
-  if (!container) return;
-
-  const onScroll = () => {
-    const scrollTop = container.scrollTop;
-    const mid      = container.clientHeight / 2;
-    const aboutOff   = document.getElementById('about-me').offsetTop;
-    const projectsOff = document.getElementById('test2').offsetTop;
-    const contactOff  = document.getElementById('test3').offsetTop;
-
-    if (scrollTop + mid >= contactOff) {
-      setActiveSection('test3');
-    } else if (scrollTop + mid >= projectsOff) {
-      setActiveSection('test2');
-    } else {
-      setActiveSection('about-me');
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const container = document.querySelector('.scroll-column');
+    const target    = document.getElementById(id);
+    if (container && target) {
+      const y = target.offsetTop - container.offsetTop;
+      container.scrollTo({ top: y, behavior: 'smooth' });
+      // we can still optimistically set here, but observer will correct if needed
+      setActiveSection(id);
     }
   };
 
+  useEffect(() => {
+  const container = document.querySelector('.scroll-column');
+  if (!container) return;
+
+  const sectionIds = ['about-me','experience','projects'];
+
+  const onScroll = () => {
+    const scrollTop = container.scrollTop;
+    let current = sectionIds[0];        // default to first
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      // if this section's top is at or above the scroll position + 10px,
+      // treat it as having “arrived”
+      if (el && el.offsetTop <= scrollTop + 10) {
+        current = id;
+      }
+    });
+
+    setActiveSection(current);
+  };
+
+  // listen and initialize
   container.addEventListener('scroll', onScroll);
-  onScroll(); // initialize
+  onScroll();
+
   return () => container.removeEventListener('scroll', onScroll);
 }, []);
 
-
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <a href="#section-one" className="logo">S</a>
-      </div>
+      <div className="navbar-left"></div>
       <div className="navbar-right">
         <a
-          href="#section-two"
-          className={activeSection === 'about-me' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'about-me')}
-        >
-          About
-        </a>
+          href="#about-me"
+          onClick={e => scrollToSection(e,'about-me')}
+          className={activeSection==='about-me' ? 'active' : ''}
+        >About</a>
         <a
-          href="#section-three"
-          className={activeSection === 'test2' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'test2')}
-        >
-          Projects
-        </a>
+          href="#experience"
+          onClick={e => scrollToSection(e,'experience')}
+          className={activeSection==='experience' ? 'active' : ''}
+        >Experience</a>
         <a
-          href="#section-four"
-          className={activeSection === 'test3' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'test3')}
-        >
-          Contact
-        </a>
+          href="#projects"
+          onClick={e => scrollToSection(e,'projects')}
+          className={activeSection==='projects' ? 'active' : ''}
+        >Projects</a>
         <a
           href={ResumePDF}
           target="_blank"
           rel="noopener noreferrer"
           className="resume-link"
-        >
-          RESUME
-        </a>
+        >RESUME</a>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
