@@ -1,31 +1,84 @@
-// src/FirstSection.js
-import React from 'react';
+import React, { useState } from 'react';
 import './FirstSection.css';
 import githubIcon    from '../assets/github-signWhite.png';
 import instagramIcon from '../assets/instagramWhite.png';
 import linkedinIcon  from '../assets/linkedinWhite.png';
 import mailIcon      from '../assets/mailWhite.png';
-import spencerPhoto from '../assets/spencerPhoto.PNG';
+import spencerPhoto  from '../assets/spencerPhoto.PNG';
 import gradientImage from '../assets/gradient1.png';
+
+// ProjectCard component toggles hover-shadow color and links to GitHub repo
+function ProjectCard({ title, description, tags, url }) {
+  const [useSecondary, setUseSecondary] = useState(false);
+
+  const handleMouseEnter = () => {
+    setUseSecondary(prev => !prev);
+  };
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: 'none' }}
+    >
+      <div
+        className="project-card"
+        style={{
+          '--hover-shadow-color': useSecondary
+            ? 'var(--color-accent)'
+            : 'var(--color-primary)'
+        }}
+        onMouseEnter={handleMouseEnter}
+      >
+        <h3 className="project-name">{title}</h3>
+        <p className="project-description">{description}</p>
+        <div className="project-tags">
+          {tags.map((tag, idx) => (
+            <span key={tag} className={`tag ${String.fromCharCode(97 + idx)}`}>{tag}</span>
+          ))}
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export default function FirstSection() {
+  const projects = [
+    {
+      title: 'InterMeet',
+      description:
+        'An Android-based matching app where people connect with each other and are given a map of places and events to meet at. Our motto is "We INTERmediate the MEET".',
+      tags: ['Kotlin', 'Google Maps API', 'Firebase'],
+      url: 'https://github.com/InterMeetiate/Intermeet',
+    },
+    {
+      title: 'Food Decider',
+      description:
+        'Programmed a GUI that displays restaurants and their details based on user preferences. Utilized Google Maps API to gather information about the restaurant.',
+      tags: ['Python', 'Google Maps API'],
+      url: 'https://github.com/DannyM9021/FoodDecider',
+    },
+    // ...add more projects here as needed
+  ];
+
   return (
     <section className="section-one">
       <div className="left-half">
         <div className="pic-gradient">
-            <img
-              src={gradientImage}
-              alt="Gradient Background"
-              className="gradient-bg"
-            />
-            <img
-              src={spencerPhoto}
-              alt="Spencer Chuong"
-              className="profile-pic-overlay"
-            />
+          <img
+            src={gradientImage}
+            alt="Gradient Background"
+            className="gradient-bg"
+          />
+          <img
+            src={spencerPhoto}
+            alt="Spencer Chuong"
+            className="profile-pic-overlay"
+          />
         </div>
-        {/* hero image, name, tagline */}
+
         <div className="hero">
-          {/* background-shape + <img className="portrait" /> */}
           <h1>SPENCER CHUONG</h1>
           <p className="subtitle">
             A driven <span className="highlight">computer science student</span>
@@ -34,21 +87,19 @@ export default function FirstSection() {
         </div>
 
         <div className="social-row">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener">
-              <img src={githubIcon} alt="GitHub" />
-            </a>
-            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">
-              <img src={instagramIcon} alt="Instagram" />
-            </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
-              <img src={linkedinIcon} alt="LinkedIn" />
-            </a>
-            <a href="mailto:spencerchuong0@gmail.com">
-              <img src={mailIcon} alt="Email" />
-            </a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener">
+            <img src={githubIcon} alt="GitHub" />
+          </a>
+          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">
+            <img src={instagramIcon} alt="Instagram" />
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
+            <img src={linkedinIcon} alt="LinkedIn" />
+          </a>
+          <a href="mailto:spencerchuong0@gmail.com">
+            <img src={mailIcon} alt="Email" />
+          </a>
         </div>
-        {/* intro text */}
-
       </div>
 
       <div className="right-half scroll-column">
@@ -66,6 +117,7 @@ export default function FirstSection() {
             </p>
           </div>
         </div>
+
         <div id="experience" className="experience-section">
           <h2 className="section-title">Experience</h2>
           <div className="experience-card">
@@ -78,34 +130,20 @@ export default function FirstSection() {
             </p>
           </div>
         </div>
+
         {/* — Projects — */}
         <div id="projects" className="projects-section">
           <h2 className="section-title">Projects</h2>
-          <div className="project-card">
-            <h3 className="project-name">InterMeet</h3>
-            <p className="project-description">
-              An Android-based matching app where people connect with each other and are given
-              a map of places and events to meet at. Our motto is “We INTERmediate the MEET”.
-            </p>
-            <div className="project-tags">
-              <span className="tag a">Kotlin</span>
-              <span className="tag b">Google Maps API</span>
-              <span className="tag c">Firebase</span>
-            </div>
-          </div>
-          <div className="project-card">
-            <h3 className="project-name">Food Decider</h3>
-            <p className="project-description">
-              Programmed a GUI that displays restaurants and their details based on user preferences.
-              Utilized Google Maps API to gather information about the restaurant
-            </p>
-            <div className="project-tags">
-              <span className="tag a">Python</span>
-              <span className="tag b">Google Maps API</span>
-            </div>
-          </div>
-          </div>
-
+          {projects.map((proj, i) => (
+            <ProjectCard
+              key={i}
+              title={proj.title}
+              description={proj.description}
+              tags={proj.tags}
+              url={proj.url}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
