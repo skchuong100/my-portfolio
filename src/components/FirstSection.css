@@ -28,6 +28,10 @@
   padding-top: 1rem;
   background: var(--color-bg);
 }
+ .svg-group {
+  display: none;
+  pointer-events: none;   /* so they never catch clicks */
+}
 
 /* left-half on mobile: center intro + icons */
 .left-half {
@@ -229,7 +233,9 @@
     column-gap: 4rem;
     padding-inline: 2rem;
     position: relative;
+    overflow: hidden;
   }
+
 
 
   /* sticky left-half */
@@ -309,6 +315,36 @@
 
   .project-card:hover {
     box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
+  }
+
+  .svg-group {
+    display: block;
+    position: absolute;
+    opacity: 0.6;         /* subtle behind content */
+    transform: scale(0.75);        /* 75% of original size */
+    transform-origin: top left;    /* adjust origin so they don’t drift */
+  }
+
+  .svg-group-left {
+    top: 5rem;
+    left: 2rem;
+    width: 50px;
+    height: auto;
+  }
+
+  .svg-group-middle {
+    bottom: 12rem;
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+    width: 240px;
+    height: auto;
+  }
+
+  .svg-group-right {
+    top: 20rem;
+    right: 0rem;
+    width: 200px;
+    height: auto;
   }
 
 }
