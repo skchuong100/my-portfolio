@@ -230,18 +230,7 @@
     padding-inline: 2rem;
     position: relative;
   }
-  .section-one::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-0.5px);
-    width: 1px;
-    background: red;
-    pointer-events: none;
-    z-index: 100;
-  }
+
 
   /* sticky left-half */
   .left-half {

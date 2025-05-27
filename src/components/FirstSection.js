@@ -110,6 +110,9 @@ export default function FirstSection() {
               I’m a recent computer science graduate from California State University, Long Beach. I’m passionate about making cool and niche programs with excellent user interfaces.
             </p>
             <p className="about-me-text">
+                In my role as a Patent Examiner at the United States Patent and Trademark Office, I assessed AI/ML patent applications by reviewing their technical disclosures to ensure methods and systems were described clearly and completely for implementation. I confirmed that procedural workflows and data‐handling processes met the enablement and written‐description standards. At the same time, I applied eligibility, novelty, and non‐obviousness analyses.
+            </p>
+            <p className="about-me-text">
               Currently, I’m open to any position in full stack development, ranging from backend to front end. I am also studying other aspects of computer science on the side for functionalities in my projects.
             </p>
             <p className="about-me-text">

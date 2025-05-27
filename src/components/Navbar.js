@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
+import resumePDF from '../assets/SpencerChuongResume.pdf';
 
 const sectionIds = ['about-me', 'experience', 'projects'];
+const labelMap = {
+  'about-me': 'About',
+  'experience': 'Experience',
+  'projects': 'Projects'
+};
 
-export default function NavBar({ activeSection, setActiveSection }) {
+export default function NavBar() {
+  const [activeSection, setActiveSection] = useState(sectionIds[0]);
+
   useEffect(() => {
     const container = document.querySelector('.scroll-column');
     if (!container) return;
@@ -17,7 +25,6 @@ export default function NavBar({ activeSection, setActiveSection }) {
         const el = document.getElementById(id);
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        // Calculate visible part of section within container viewport
         const visibleTop = Math.max(rect.top, containerRect.top);
         const visibleBottom = Math.min(rect.bottom, containerRect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
@@ -28,15 +35,13 @@ export default function NavBar({ activeSection, setActiveSection }) {
         }
       });
 
-      if (bestId !== activeSection) {
-        setActiveSection(bestId);
-      }
+      setActiveSection(bestId);
     };
 
     container.addEventListener('scroll', onScroll);
     onScroll();
     return () => container.removeEventListener('scroll', onScroll);
-  }, [activeSection, setActiveSection]);
+  }, []);
 
   const handleClick = id => e => {
     e.preventDefault();
@@ -47,12 +52,6 @@ export default function NavBar({ activeSection, setActiveSection }) {
     } else if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const labelMap = {
-    'about-me': 'About',
-    'experience': 'Experience',
-    'projects': 'Projects'
   };
 
   return (
@@ -71,6 +70,14 @@ export default function NavBar({ activeSection, setActiveSection }) {
             {labelMap[id]}
           </a>
         ))}
+        <a
+          href={resumePDF}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="resume-btn"
+        >
+          Resume
+        </a>
       </div>
     </nav>
   );
