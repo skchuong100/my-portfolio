@@ -28,12 +28,12 @@
   padding-top: 1rem;
   background: var(--color-bg);
 }
- .svg-group {
+.svg-group {
   display: none;
-  pointer-events: none;   /* so they never catch clicks */
+  pointer-events: none;
+  position: absolute;
 }
 
-/* left-half on mobile: center intro + icons */
 .left-half {
   display: flex;
   flex-direction: column;
@@ -41,7 +41,6 @@
   margin-bottom: 2rem;
 }
 
-/* right-half on mobile: natural flow */
 .right-half.scroll-column {
   display: block;
   width: 100%;
@@ -197,13 +196,15 @@
 }
 .project-tags {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 }
-.project-tags .tag {
-  font-size: 0.75rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 999px;
+.tag {
+  display: inline-block;
   color: var(--color-text);
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
 }
 .tag.a {
   background: linear-gradient(135deg, #FBAE6A, #FFAB66);
@@ -211,22 +212,17 @@
 .tag.b {
   background: linear-gradient(135deg, #7579FA, #A68BFF);
 }
-
 .tag.c {
   background: linear-gradient(135deg, #FBAE6A, #FFAB66);
-
 }
 
-/* ——— Desktop enhancements (≥768px) ——— */
-@media (min-width: 768px) {
-  /* disable page scrolling; only right-half scrolls */
+/* ——— Desktop only on devices that can hover ——— */
+@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
   html,
   body {
     overflow: hidden;
     overflow-x: hidden;
   }
-
-  /* two-column grid with equal insets and divider */
   .section-one {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -235,10 +231,6 @@
     position: relative;
     overflow: hidden;
   }
-
-
-
-  /* sticky left-half */
   .left-half {
     position: sticky;
     top: 0;
@@ -250,8 +242,6 @@
     padding: 3rem;
     margin-left: 5rem;
   }
-
-  /* scrollable right-half */
   .right-half.scroll-column {
     display: flex;
     flex-direction: column;
@@ -263,88 +253,118 @@
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    position: relative;
-
-
   }
   .right-half.scroll-column::-webkit-scrollbar {
     display: none;
   }
-
-  /* constrain content width */
   .about-me-section,
   .experience-section,
   .projects-section {
     width: 100%;
     max-width: 400px;
   }
-
-
-  .projects-section{
+  .projects-section {
     padding-bottom: 10rem;
   }
-
   .social-row {
     display: none;
   }
-
   .scroll-column {
-  height: calc(100vh - 60px); /* adjust if your navbar is taller/shorter */
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  overflow-y: auto;
-  height: calc(100vh - 60px);
-  scroll-behavior: smooth;
-
-  /* hide scrollbar */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
-
-  .scroll-column::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari and Opera */
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;     /* Firefox */
   }
-
- .project-card {
+  .scroll-column::-webkit-scrollbar {
+    display: none;
+  }
+  .project-card {
     position: relative;
     overflow: visible;
     transition: box-shadow 0.3s ease;
-    /* initialize the CSS variable */
     --hover-shadow-color: var(--color-primary);
   }
-
   .project-card:hover {
     box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
   }
-
   .svg-group {
     display: block;
+    pointer-events: none;
     position: absolute;
-    opacity: 0.6;         /* subtle behind content */
-    transform: scale(0.75);        /* 75% of original size */
-    transform-origin: top left;    /* adjust origin so they don’t drift */
-  }
+    transform: scale(0.75);
 
+  }
   .svg-group-left {
+    position: absolute;
     top: 5rem;
     left: 2rem;
     width: 50px;
     height: auto;
   }
-
   .svg-group-middle {
+    position: absolute;
     bottom: 12rem;
     left: 50%;
     transform: translateX(-50%) scale(0.75);
     width: 240px;
     height: auto;
   }
-
   .svg-group-right {
+    position: absolute;
     top: 20rem;
     right: 0rem;
     width: 200px;
     height: auto;
   }
+}
 
+/* ——— Phones (SM): 576px to 767px ——— */
+@media (min-width: 576px) and (max-width: 767px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+  .section-one {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* ——— Tablets (MD): 768px to 991px ——— */
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-one {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    padding-inline: 1.5rem;
+  }
+  .left-half {
+    margin-left: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* ——— Laptops (LG): 992px to 1199px ——— */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .section-one {
+    column-gap: 4rem;
+    padding-inline: 2rem;
+  }
+  .right-half.scroll-column {
+    padding: 5rem;
+  }
+}
+
+/* ——— Wide (XL): ≥1200px ——— */
+@media (min-width: 1200px) {
+  .section-one {
+    column-gap: 6rem;
+    padding-inline: 3rem;
+  }
+  .left-half {
+    margin-left: 5rem;
+    padding: 3rem;
+  }
+  .right-half.scroll-column {
+    padding: 6rem;
+    max-width: 800px;
+  }
 }

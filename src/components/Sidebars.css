@@ -121,8 +121,8 @@
     margin-top: 20px; /* Adjust bottom margin as needed */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .sidebar {
-    display: flex; /* preserves your left/right sidebar layout */
+    display: flex;
   }
 }
