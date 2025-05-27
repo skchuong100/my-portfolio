@@ -81,7 +81,7 @@ export default function FirstSection() {
         <div className="hero">
           <h1>SPENCER CHUONG</h1>
           <p className="subtitle">
-            A driven <span className="highlight">computer science student</span>
+            An aspiring <span className="highlight">software developer</span>
           </p>
           <p className="tagline">Making one project at a time</p>
         </div>
