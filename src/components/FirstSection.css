@@ -212,6 +212,19 @@
   background: linear-gradient(135deg, #FBAE6A, #FFAB66);
 
 }
+/* at the bottom of FirstSection.css—or grouped with your .highlight rule */
+
+.hero .subtitle .highlight {
+  display: inline-block;
+  min-width: 24ch;    /* reserve space for up to 24 characters */
+  text-align: left;   /* or center, if you’d prefer the words centered in that box */
+}
+
+
+.hero .subtitle .highlight.fade {
+  opacity: 0;
+}
+
 
 /* ——— Desktop enhancements (≥768px) ——— */
 @media (min-width: 768px) {

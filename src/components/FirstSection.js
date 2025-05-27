@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState /* ← add */, useEffect /* ← add */ } from 'react';
 import './FirstSection.css';
 import githubIcon    from '../assets/github-signWhite.png';
 import instagramIcon from '../assets/instagramWhite.png';
@@ -44,6 +44,28 @@ function ProjectCard({ title, description, tags, url }) {
 }
 
 export default function FirstSection() {
+  const titles = [
+    'computer science student',
+    'full-stack developer',
+    'AI/ML engineer',
+    'data analyst'
+  ];
+  const [idx, setIdx] = useState(0);          // which title to show
+  const [fade, setFade] = useState(false);    // trigger fade-out
+
+  useEffect(() => {
+    // every 3s start fade-out
+    const fadeTimer = setTimeout(() => {
+      setFade(true);
+      // after fade duration, switch text and fade back in
+      setTimeout(() => {
+        setIdx((idx + 1) % titles.length);
+        setFade(false);
+      }, 500); // match CSS transition-duration
+    }, 3000);
+
+    return () => clearTimeout(fadeTimer);
+  }, [idx]);
   const projects = [
     {
       title: 'InterMeet',
@@ -81,7 +103,10 @@ export default function FirstSection() {
         <div className="hero">
           <h1>SPENCER CHUONG</h1>
           <p className="subtitle">
-            A driven <span className="highlight">computer science student</span>
+            A driven{' '}
+            <span className={`highlight${fade ? ' fade' : ''}`}>
+              {titles[idx]}
+            </span>
           </p>
           <p className="tagline">Making one project at a time</p>
         </div>
