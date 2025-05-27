@@ -1,28 +1,10 @@
-/* Hide scrollbar for Chrome, Safari, and Opera */
-body::-webkit-scrollbar {
-  display: none;
+:root {
+  --color-bg: #1E1E1E;
+  --color-primary: #7579FA;
+  --color-accent: #FFA500;
+  --color-text: #FFFFFF;
 }
 
-/* Hide scrollbar for IE, Edge, and Firefox */
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.App {
-  font-family: Arial, sans-serif;
-}
-
-section {
-  height: 100vh; /* Make each section take up the full viewport height */
-  padding: 50px;
-  text-align: center;
-  color: white;
-  display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-}
-
-.section-one {
-  background-color: #161417;
+body, html{
+  background-color: var(--color-bg);
 }

@@ -1,83 +1,84 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Navbar.css';
-import ResumePDF from '../assets/Spencer Chuong\'s Resume.pdf';
+import resumePDF from '../assets/SpencerChuongResume.pdf';
 
-const Navbar = () => {
-  const [activeSection, setActiveSection] = useState(null);
+const sectionIds = ['about-me', 'experience', 'projects'];
+const labelMap = {
+  'about-me': 'About',
+  'experience': 'Experience',
+  'projects': 'Projects'
+};
 
-  // onClick still scrolls the mini‐page
-  const handleMiniPageScroll = (e, targetId) => {
-    e.preventDefault();
-    const container = document.querySelector('.scroll-column');
-    const target    = document.getElementById(targetId);
-    if (container && target) {
-      const offset = target.offsetTop - container.offsetTop;
-      container.scrollTo({ top: offset, behavior: 'smooth' });
-    }
-  };
+export default function NavBar() {
+  const [activeSection, setActiveSection] = useState(sectionIds[0]);
 
-  // watch the scroll‐column’s scroll position
   useEffect(() => {
     const container = document.querySelector('.scroll-column');
     if (!container) return;
 
     const onScroll = () => {
-      const scrollTop = container.scrollTop;
-      const h         = container.clientHeight / 2;
-      // pick the middle of the viewport as our switch point
-      const t1 = document.getElementById('test1').offsetTop;
-      const t2 = document.getElementById('test2').offsetTop;
-      const t3 = document.getElementById('test3').offsetTop;
+      const containerRect = container.getBoundingClientRect();
+      let bestId = sectionIds[0];
+      let maxVisible = 0;
 
-      if (scrollTop >= t3 - h) setActiveSection('test3');
-      else if (scrollTop >= t2 - h) setActiveSection('test2');
-      else                         setActiveSection('test1');
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const visibleTop = Math.max(rect.top, containerRect.top);
+        const visibleBottom = Math.min(rect.bottom, containerRect.bottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const ratio = visibleHeight / rect.height;
+        if (ratio > maxVisible) {
+          maxVisible = ratio;
+          bestId = id;
+        }
+      });
+
+      setActiveSection(bestId);
     };
 
     container.addEventListener('scroll', onScroll);
-    onScroll(); // initialize
+    onScroll();
     return () => container.removeEventListener('scroll', onScroll);
   }, []);
+
+  const handleClick = id => e => {
+    e.preventDefault();
+    const container = document.querySelector('.scroll-column');
+    const el = document.getElementById(id);
+    if (container && el) {
+      container.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+    } else if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <a href="#section-one" className="logo">S</a>
+        {/* logo or branding here */}
       </div>
       <div className="navbar-right">
+        {sectionIds.map(id => (
+          <a
+            key={id}
+            href={`#${id}`}
+            onClick={handleClick(id)}
+            className={activeSection === id ? 'active' : ''}
+          >
+            {labelMap[id]}
+          </a>
+        ))}
         <a
-          href="#section-two"
-          className={activeSection === 'test1' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'test1')}
-        >
-          About
-        </a>
-        <a
-          href="#section-three"
-          className={activeSection === 'test2' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'test2')}
-        >
-          Projects
-        </a>
-        <a
-          href="#section-four"
-          className={activeSection === 'test3' ? 'active' : ''}
-          onClick={e => handleMiniPageScroll(e, 'test3')}
-        >
-          Contact
-        </a>
-        <a
-          href={ResumePDF}
+          href={resumePDF}
           target="_blank"
           rel="noopener noreferrer"
-          className="resume-link"
+          className="resume-btn"
         >
-          RESUME
+          Resume
         </a>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

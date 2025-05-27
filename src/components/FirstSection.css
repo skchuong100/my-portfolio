@@ -1,131 +1,314 @@
+/* FirstSection.css */
+
+/* ——— Font & variables ——— */
 @font-face {
   font-family: 'DMMono-Medium';
-  src: url(../assets/fonts/DMMono-Medium.ttf) format('truetype');
+  src: url('../assets/fonts/DMMono-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DMMono-Regular';
+  src: url('../assets/fonts/DMMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-
-/* 3) Text block under the image */
-.intro-text {
-  font-family: "DMMono-Medium", monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  /* children stay left-aligned */
-  align-self: center;       /* center THIS block under the picture */
-  max-width: 30rem;         /* optional line-length constraint */
-  margin-top: 7rem;         /* space from .pic-gradient */
-  /* completely remove any transform or crazy margins */
+:root {
+  --color-bg: #151515;
+  --color-primary: #7579FA;
+  --color-accent: #FFA500;
+  --color-text: #FFFFFF;
 }
 
-
-
-/* I’M SPENCER CHUONG */
-.name-text {
-  font-size: 3rem;
-  color: #7579FA;
-  margin: 0.25rem 0;
-}
-
-/* subtitle & description */
-.subtitle-text {
-  font-size: 1.25rem;
-  color: #fff;
-  margin: 0.5rem 0;
-}
-.subtitle-text .highlight {
-  color: #FBAE6A;
-}
-.description-text {
-  font-size: 1rem;
-  color: #fff;
-  line-height: 1.4;
-  margin: 0;                /* no extra top/bottom margins */
-}
-
-/* ── split 50-50 viewport ─────────────────────────────────── */
+/* ——— Mobile-first layout ——— */
 .section-one {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;   /* left | right */
-    background: #0B080E;
-    padding-top: 4rem;                /* keep clear of fixed navbar */
-    position: fixed;    /* stretch across the screen */
-    inset: 0;           /* same as top:0; right:0; bottom:0; left:0 */
-    overflow: hidden;   /* nothing inside can leak out */
-  }
+  display: block;
+  position: static;
+  padding-top: 1rem;
+  background: var(--color-bg);
+}
 
+/* left-half on mobile: center intro + icons */
 .left-half {
   display: flex;
   flex-direction: column;
-  align-items: center;    /* center children horizontally */
-  justify-content: flex-start; /* let us push the blob up */
-  margin-top: -10rem;      /* clear your navbar */
-  padding-top: 10rem;
-  overflow: hidden;
-
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-  /* right column flex-centres its content */
-  .right-half {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;              /* vertical centre */
-  }
+/* right-half on mobile: natural flow */
+.right-half.scroll-column {
+  display: block;
+  width: 100%;
+}
 
-  /* mini-page column */
-  .scroll-column {
-    width: min(500px, 90%);
-    height: calc(100vh - 4rem);   /* 4 rem = the top padding you gave .section-one */
-    overflow-y: auto;
-    background: Green;
-    border-radius: 8px;
-    color: #fff;
-
-  }
-
-  .scroll-column::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari, Opera */
-  }
-
-  /* fill-height demo blocks so you have to scroll */
-  .scroll-item {
-    height: 50vh; /*Adjust spacing between content*/
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-  }
-
-/* in FirstSection.css */
-
+/* ——— Blob + portrait ——— */
 .pic-gradient {
   position: relative;
-  width: 400px;           /* adjust to your taste */
-  height: 400px;          /* same as above */
-  margin: 0 auto;         /* center it */
-  overflow: visible;      /* allow the blob to peek out */
+  width: 80%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  margin: 5rem auto 3rem;
+  overflow: visible;
 }
-
 .pic-gradient .gradient-bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px;           /* larger than wrapper */
+  width: 100%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-
-
-/* 2b) your portrait on top */
 .pic-gradient .profile-pic-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;           /* desired photo size */
+  width: 80%;
+  max-width: 350px;
   transform: translate(-50%, -50%);
-  z-index: 2;
-  border-radius: 25%;     /* optional rounding */
+  border-radius: 50%;
   object-fit: cover;
+  z-index: 2;
+}
+
+/* ——— Hero text ——— */
+.hero {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.hero h1 {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  font-family: 'DMMono-Medium', monospace;
+}
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--color-text);
+  font-family: 'DMMono-Regular', monospace;
+}
+.hero .subtitle .highlight {
+  color: var(--color-accent);
+}
+.hero .tagline {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  font-family: 'DMMono-Regular', monospace;
+}
+
+/* ——— Social icons ——— */
+.social-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+.social-row img {
+  width: 1.5rem;
+  height: auto;
+}
+
+/* ——— Section wrappers ——— */
+.about-me-section,
+.experience-section,
+.projects-section {
+  padding: 0 1rem 2rem;
+}
+
+/* ——— Section titles ——— */
+.section-title {
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-family: 'DMMono-Regular', monospace;
+}
+
+/* ——— About Me content ——— */
+.about-me-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: 'DMMono-Regular', monospace;
+}
+.about-me-text {
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ——— Experience & Projects cards ——— */
+.experience-card,
+.project-card {
+  max-width: 400px;
+  margin: 0 auto 2rem;
+}
+.experience-card {
+  background: var(--color-primary);
+  color: var(--color-text);
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.experience-card .job-title {
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+.experience-card .job-dates {
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0 0 0.75rem;
+}
+.experience-card .job-description {
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+.project-card {
+  background: #252525;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.project-card .project-name {
+  color: var(--color-text);
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem;
+}
+.project-card .project-description {
+  color: var(--color-text);
+  font-family: 'DMMono-Regular', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+.project-tags {
+  display: flex;
+  gap: 0.75rem;
+}
+.project-tags .tag {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-text);
+}
+.tag.a {
+  background: linear-gradient(135deg, #FBAE6A, #FFAB66);
+}
+.tag.b {
+  background: linear-gradient(135deg, #7579FA, #A68BFF);
+}
+
+.tag.c {
+  background: linear-gradient(135deg, #FBAE6A, #FFAB66);
+
+}
+
+/* ——— Desktop enhancements (≥768px) ——— */
+@media (min-width: 768px) {
+  /* disable page scrolling; only right-half scrolls */
+  html,
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+
+  /* two-column grid with equal insets and divider */
+  .section-one {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+    padding-inline: 2rem;
+    position: relative;
+  }
+
+
+  /* sticky left-half */
+  .left-half {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem;
+    margin-left: 5rem;
+  }
+
+  /* scrollable right-half */
+  .right-half.scroll-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+    padding: 6rem;
+    height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    position: relative;
+
+
+  }
+  .right-half.scroll-column::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* constrain content width */
+  .about-me-section,
+  .experience-section,
+  .projects-section {
+    width: 100%;
+    max-width: 400px;
+  }
+
+
+  .projects-section{
+    padding-bottom: 10rem;
+  }
+
+  .social-row {
+    display: none;
+  }
+
+  .scroll-column {
+  height: calc(100vh - 60px); /* adjust if your navbar is taller/shorter */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  height: calc(100vh - 60px);
+  scroll-behavior: smooth;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+  .scroll-column::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari and Opera */
+  }
+
+ .project-card {
+    position: relative;
+    overflow: visible;
+    transition: box-shadow 0.3s ease;
+    /* initialize the CSS variable */
+    --hover-shadow-color: var(--color-primary);
+  }
+
+  .project-card:hover {
+    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
+  }
+
 }

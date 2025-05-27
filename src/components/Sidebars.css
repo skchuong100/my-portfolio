@@ -11,7 +11,7 @@
     top: 0;
     height: 100vh; /* Full height of the viewport */
     width: 150px; /* Width of both sidebars */
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between; /* Space between containers and the bar */
     align-items: center;
@@ -119,4 +119,10 @@
     height: 150px; /* Height of the gradient line */
     background: linear-gradient(#7579FA, #FBAE6A); /* Gradient from top to bottom */
     margin-top: 20px; /* Adjust bottom margin as needed */
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex; /* preserves your left/right sidebar layout */
+  }
 }

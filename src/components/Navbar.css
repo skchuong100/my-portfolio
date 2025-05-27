@@ -23,9 +23,9 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: transparent; /* Matches your first and third section color */
+    background-color: #1E1E1E; /* Matches your first and third section color */
     color: white;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px; /* General padding for the navbar to create space on both sides */
@@ -62,20 +62,10 @@ body::-webkit-scrollbar {
 }
 
 .navbar-right a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 100; /* Regular weight */
-    font-family: "DMMono-Medium", monospace;
-
-    transition: color 0.3s ease;
-    background: none; /* No background by default */
-    background-clip: text;
-    -webkit-background-clip: text; /* Safari/Webkit support */
-    -webkit-text-fill-color: white; /* Fill text with white by default */
+  text-decoration: none;
+  background: none;
+  -webkit-text-fill-color: white;  /* default text color */
 }
-
-/* Hover effect with gradient */
 
 .navbar-right a:hover,
 .navbar-right a.active {
@@ -84,8 +74,16 @@ body::-webkit-scrollbar {
   -webkit-text-fill-color: transparent;
 }
 
+
+
 .navbar-right .resume-link {
     color: #7579FA; /* Distinctive color for Resume link */
 
 
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    display: flex; /* or whatever your desktop layout uses */
+  }
 }
