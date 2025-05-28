@@ -216,8 +216,51 @@
   background: linear-gradient(135deg, #FBAE6A, #FFAB66);
 }
 
-/* ——— Desktop responsive fluid layout ——— */
-@media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
+
+
+/* —— Landscape phones & tablets (≤991 px) ——————————— */
+@media (orientation: landscape) and (min-width: 576px) and (max-width: 991px) {
+  /* recenter the intro panel */
+  .section-one {
+    /* a little narrower gap so both halves stay visible */
+    column-gap: clamp(1rem, 2vw, 2rem);
+    padding-inline: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .left-half {
+    position: static;          /* release the sticky-top */
+    margin-left: 0;            /* remove desktop offset */
+    height: auto;              /* let it size naturally   */
+    padding: 2rem 1rem;        /* lighter side padding    */
+
+    /* --- vertical + horizontal centring --- */
+    justify-content: center;   /* centre children block-wise */
+    align-items: center;       /* centre inline-wise         */
+  }
+
+}
+/* —— Landscape tablets (≈ 992 – 1366 px wide) ——————————— */
+@media (orientation: landscape) and (min-width: 992px) and (max-width: 1366px) {
+  /* tighten the gap between the two grid tracks and centre them */
+  .section-one {
+    column-gap: clamp(1rem, 2.5vw, 3rem);
+    padding-inline: clamp(1rem, 2.5vw, 2rem);
+  }
+
+  /* pull the social / portrait column back to the true centre */
+  .left-half {
+    margin-left: 0;      /* overrides the 5-rem desktop offset   */
+  }
+
+  /* keep the text column from sliding too far right */
+  .right-half.scroll-column {
+    margin-inline: auto; /* centre inside its grid cell          */
+    padding: clamp(4rem, 7vh, 6rem);
+    max-width: 760px;    /* prevents ultra-wide line lengths     */
+  }
+}
+/* —— treat wide landscape tablets / smart-displays as desktop —— */
+@media (orientation: landscape) and (min-width: 1024px) {
   html,
   body {
     overflow: hidden;
@@ -226,22 +269,25 @@
   .section-one {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2rem, 2vw, 4rem);
-    padding-inline: clamp(1rem, 2vw, 3rem);
+    column-gap: clamp(1rem, 2vw, 3rem) !important;  /* was 2–4 rem */
+    padding-inline: clamp(1rem, 2vw, 2.5rem);       /* keeps side gutters even */
     min-height: 100vh;
     position: relative;
     overflow: hidden;
   }
   .left-half {
     position: sticky;
-    top: 0;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: clamp(2rem, 6vh, 3rem);
-    margin-left: clamp(2rem, 5vw, 5rem);
+    margin-left: 0 !important;   /* overrides the clamp(2rem,5vw,5rem) */
   }
+
+  .pic-gradient {
+    max-width: 500px;
+  }
+
   .right-half.scroll-column {
     height: 100vh;
     display: flex;
@@ -253,6 +299,8 @@
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    margin-inline: auto;
+    max-width: 40px;
   }
   .right-half.scroll-column::-webkit-scrollbar {
     display: none;
@@ -269,10 +317,121 @@
   .social-row {
     display: none;
   }
+
+  .project-card {
+    position: relative;
+    overflow: visible;
+    transition: box-shadow 0.3s ease;
+    /* initialize the CSS variable */
+    --hover-shadow-color: var(--color-primary);
+  }
+
   .project-card:hover {
-    box-shadow: 8px 8px 0 0 var(--color-primary);
+    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
+}
+}
+
+
+/* —— iPad Pro landscape (1024 – 1366 px) ——————————— */
+@media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
+  /* cancel the desktop offset + centre the intro block */
+  .left-half {
+    margin-left: 0 !important;     /* override every earlier rule */
+    justify-content: center;       /* vertical centring when sticky */
+  }
+
+  /* tighten overall spacing so both halves stay balanced */
+  .section-one {
+    column-gap: clamp(1rem, 2vw, 3rem) !important;
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+
+
+  /* keep text column readable and centred */
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 760px;
+    padding: clamp(4rem, 7vh, 6rem);
   }
 }
+
+/* —— ALL portrait tablets (iPad mini → 12.9-in Pro) ————————— */
+@media (orientation: portrait) and (min-width: 600px) and (max-width: 1366px) {
+  /* cancel the desktop margin that pushes the grid right */
+  .left-half {
+    margin-left: 0 !important;      /* overrides earlier 5-rem/clamp() rule */
+    justify-content: center;        /* keeps avatar/hero block vertically centred */
+  }
+
+  /* tighten the gap + side padding so columns sit evenly */
+  .section-one {
+    column-gap: clamp(1rem, 3vw, 2.5rem);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* keep the text column readable and visually centred */
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 720px;
+    padding: clamp(4rem, 8vh, 5rem);
+  }
+  .projects-section{
+    margin-bottom: 10rem;
+  }
+}
+
+/* —— Global landscape tweak: narrow the column gap ———————— */
+@media (orientation: landscape) {
+  .section-one {
+    /* reduce from clamp(2-6rem) » clamp(1-3rem) */
+    column-gap: clamp(1rem, 2vw, 3rem);
+  }
+}
+
+/* —— Portrait tablets (iPad Pro etc.) ——————————— */
+@media (orientation: portrait) and (min-width: 768px) and (max-width: 1112px) {
+  /* narrow the gap & insets so the grid stays centred */
+  .section-one {
+    column-gap: clamp(1rem, 3vw, 2.5rem);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* cancel the desktop offset that pushes the grid right */
+  .left-half {
+    margin-left: 0;
+    padding: 2.5rem 2rem;      /* keep similar breathing room */
+  }
+
+  /* keep text column readable and centred */
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 600px;          /* avoids extra-wide line-lengths */
+    padding: clamp(4rem, 8vh, 5rem);
+  }
+  .projects-section{
+    margin-bottom: 10rem;
+  }
+}
+
+/* —— Super-wide iPad / 14-in “Pro Max” in landscape ————————— */
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1920px) {
+  .left-half {
+    margin-left: 0 !important;   /* override desktop offset */
+    justify-content: center;     /* keep avatar/hero block centred */
+  }
+
+  .section-one {                 /* balance the two columns */
+    column-gap: clamp(1rem, 2.5vw, 4rem);
+    padding-inline: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  .right-half.scroll-column {    /* readable line-lengths */
+    margin-inline: auto;
+    max-width: 800px;
+  }
+}
+
 
 /* ——— Phones (SM): 576px to 767px ——— */
 @media (min-width: 576px) and (max-width: 767px) {
@@ -306,37 +465,4 @@
   .right-half.scroll-column {
     padding: 5rem;
   }
-}
-
-/* ——— Wide (XL): ≥1200px ——— */
-@media (min-width: 1200px) {
-  .section-one {
-    column-gap: 6rem;
-    padding-inline: 3rem;
-  }
-  .left-half {
-    margin-left: 5rem;
-    margin-top: 3rem;
-    padding: 3rem;
-  }
-  .right-half.scroll-column {
-    padding: 11rem;
-    max-width: 800px;
-  }
-.project-card {
-    position: relative;
-    overflow: visible;
-    transition: box-shadow 0.3s ease;
-    /* initialize the CSS variable */
-    --hover-shadow-color: var(--color-primary);
-  }
-
-  .project-card:hover {
-    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
-  }
-
-  .projects-section{
-    margin-bottom: 10rem;
-  }
-
 }
