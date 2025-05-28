@@ -354,6 +354,11 @@
     max-width: 760px;
     padding: clamp(4rem, 7vh, 6rem);
   }
+  .social-row {
+    display: flex !important;        /* beats the earlier “display: none” */
+    justify-content: center;
+    gap: 1rem;
+  }
 }
 
 /* —— ALL portrait tablets (iPad mini → 12.9-in Pro) ————————— */
@@ -378,6 +383,54 @@
   }
   .projects-section{
     margin-bottom: 10rem;
+  }
+
+  .about-me-section{
+    max-width: 85%;
+  }
+
+  .experience-card,
+  .project-card {
+    width: 80%;        /* fill the column */
+    max-width: none;    /* remove the 400 px cap */
+    margin: 0 0 2rem;   /* align left with the title, keep bottom gap */
+  }
+}
+
+
+/* —— ALL portrait tablets (iPad mini → 12.9-in Pro) ————————— */
+@media (orientation: portrait) and (min-width: 800px) and (max-width: 1366px) {
+  /* cancel the desktop margin that pushes the grid right */
+  .left-half {
+    margin-left: 0 !important;      /* overrides earlier 5-rem/clamp() rule */
+    justify-content: center;        /* keeps avatar/hero block vertically centred */
+  }
+
+  /* tighten the gap + side padding so columns sit evenly */
+  .section-one {
+    column-gap: clamp(1rem, 3vw, 2.5rem);
+    padding-inline: clamp(1rem, 3vw, 2rem);
+  }
+
+  /* keep the text column readable and visually centred */
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 720px;
+    padding: clamp(4rem, 8vh, 5rem);
+  }
+  .projects-section{
+    margin-bottom: 10rem;
+  }
+
+  .about-me-section{
+    max-width: 100%;
+  }
+
+  .experience-card,
+  .project-card {
+    width: 90%;        /* fill the column */
+    max-width: none;    /* remove the 400 px cap */
+    margin: 0 0 2rem;   /* align left with the title, keep bottom gap */
   }
 }
 
@@ -406,7 +459,7 @@
   /* keep text column readable and centred */
   .right-half.scroll-column {
     margin-inline: auto;
-    max-width: 600px;          /* avoids extra-wide line-lengths */
+    max-width: 40rem;          /* avoids extra-wide line-lengths */
     padding: clamp(4rem, 8vh, 5rem);
   }
   .projects-section{
@@ -430,6 +483,7 @@
     margin-inline: auto;
     max-width: 800px;
   }
+
 }
 
 
@@ -470,14 +524,6 @@
   }
 }
 
-/* —— Restore social-row on wide tablets / smart-displays in landscape —— */
-@media (orientation: landscape) and (min-width: 1024px) and (max-width: 1600px) {
-  .social-row {
-    display: flex !important;        /* beats the earlier “display: none” */
-    justify-content: center;
-    gap: 1rem;
-  }
-}
 
 /* —— Nest-Hub-class landscape screens (shorter than 700 px high) —— */
 @media (orientation: landscape) and (min-width: 1024px) and (max-height: 700px) {
@@ -486,5 +532,16 @@
     max-width: 250px;
     width: 70%;          /* still responsive on narrower widths */
     margin: 3rem auto 2rem;
+  }
+}
+
+/* —— Phones in landscape: let the cards stretch too —— */
+@media (orientation: landscape) and (max-width: 932px) {
+
+  .experience-card,
+  .project-card {
+    width: 95%;        /* fill the column */
+    max-width: none;    /* lift the 400 px ceiling */
+    margin: 0 0 1.5rem; /* align left; keep bottom spacing */
   }
 }
