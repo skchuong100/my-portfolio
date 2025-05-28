@@ -465,4 +465,26 @@
   .right-half.scroll-column {
     padding: 5rem;
   }
+  .social-row {
+    display: flex;
+  }
+}
+
+/* —— Restore social-row on wide tablets / smart-displays in landscape —— */
+@media (orientation: landscape) and (min-width: 1024px) and (max-width: 1600px) {
+  .social-row {
+    display: flex !important;        /* beats the earlier “display: none” */
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+/* —— Nest-Hub-class landscape screens (shorter than 700 px high) —— */
+@media (orientation: landscape) and (min-width: 1024px) and (max-height: 700px) {
+  .pic-gradient {
+    /* smaller than the 500 px set for iPad Pro etc. :contentReference[oaicite:0]{index=0} */
+    max-width: 250px;
+    width: 70%;          /* still responsive on narrower widths */
+    margin: 3rem auto 2rem;
+  }
 }

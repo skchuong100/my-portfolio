@@ -126,3 +126,10 @@
     display: flex;
   }
 }
+
+@media (orientation: landscape) and (min-width: 820px) and (max-width: 1366px) {
+
+  .sidebar {
+    display: none !important;      /* overrides the ≥768 px “display:flex” rule :contentReference[oaicite:0]{index=0} */
+  }
+}
