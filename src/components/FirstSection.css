@@ -272,29 +272,6 @@
   .project-card:hover {
     box-shadow: 8px 8px 0 0 var(--color-primary);
   }
-  .svg-group {
-    display: block;
-    pointer-events: none;
-  }
-  .svg-group-left {
-    position: absolute;
-    top: 15vh;
-    left: 2vw;
-    width: clamp(40px, 5vw, 80px);
-  }
-  .svg-group-middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.75);
-    width: clamp(150px, 20vw, 240px);
-  }
-  .svg-group-right {
-    position: absolute;
-    top: 20vh;
-    right: 2vw;
-    width: clamp(60px, 6vw, 100px);
-  }
 }
 
 /* ——— Phones (SM): 576px to 767px ——— */
@@ -346,30 +323,20 @@
     padding: 11rem;
     max-width: 800px;
   }
-  .projects-section {
-    padding-bottom: 15rem;
+.project-card {
+    position: relative;
+    overflow: visible;
+    transition: box-shadow 0.3s ease;
+    /* initialize the CSS variable */
+    --hover-shadow-color: var(--color-primary);
   }
-  .svg-group {
-    display: block;
-    pointer-events: none;
+
+  .project-card:hover {
+    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
   }
-  .svg-group-left {
-    position: absolute;
-    top: 15vh;
-    left: 2vw;
-    width: clamp(40px, 5vw, 80px);
+
+  .projects-section{
+    margin-bottom: 10rem;
   }
-  .svg-group-middle {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    width: clamp(150px, 20vw, 240px);
-  }
-  .svg-group-right {
-    position: absolute;
-    top: 30vh;
-    right: 10vw;
-    width: clamp(60px, 6vw, 100px);
-  }
+
 }
