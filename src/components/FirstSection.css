@@ -216,7 +216,7 @@
   background: linear-gradient(135deg, #FBAE6A, #FFAB66);
 }
 
-/* ——— Desktop only on devices that can hover ——— */
+/* ——— Desktop responsive fluid layout ——— */
 @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
   html,
   body {
@@ -226,29 +226,29 @@
   .section-one {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 4rem;
-    padding-inline: 2rem;
+    column-gap: clamp(2rem, 2vw, 4rem);
+    padding-inline: clamp(1rem, 2vw, 3rem);
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
   }
   .left-half {
     position: sticky;
     top: 0;
-    align-self: start;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 3rem;
-    margin-left: 5rem;
+    padding: clamp(2rem, 6vh, 3rem);
+    margin-left: clamp(2rem, 5vw, 5rem);
   }
   .right-half.scroll-column {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 3rem;
-    padding: 6rem;
-    height: 100vh;
+    gap: clamp(1rem, 2vh, 3rem);
+    padding: clamp(2rem, 8vh, 6rem);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -261,61 +261,39 @@
   .experience-section,
   .projects-section {
     width: 100%;
-    max-width: 400px;
+    max-width: clamp(300px, 30vw, 400px);
   }
   .projects-section {
-    padding-bottom: 10rem;
+    padding-bottom: clamp(10rem, 10vh, 15rem);
   }
   .social-row {
     display: none;
   }
-  .scroll-column {
-    height: calc(100vh - 60px);
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;  /* IE/Edge */
-    scrollbar-width: none;     /* Firefox */
-  }
-  .scroll-column::-webkit-scrollbar {
-    display: none;
-  }
-  .project-card {
-    position: relative;
-    overflow: visible;
-    transition: box-shadow 0.3s ease;
-    --hover-shadow-color: var(--color-primary);
-  }
   .project-card:hover {
-    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
+    box-shadow: 8px 8px 0 0 var(--color-primary);
   }
   .svg-group {
     display: block;
     pointer-events: none;
-    position: absolute;
-    transform: scale(0.75);
-
   }
   .svg-group-left {
     position: absolute;
-    top: 5rem;
-    left: 2rem;
-    width: 50px;
-    height: auto;
+    top: 15vh;
+    left: 2vw;
+    width: clamp(40px, 5vw, 80px);
   }
   .svg-group-middle {
     position: absolute;
-    bottom: 12rem;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) scale(0.75);
-    width: 240px;
-    height: auto;
+    transform: translate(-50%, -50%) scale(0.75);
+    width: clamp(150px, 20vw, 240px);
   }
   .svg-group-right {
     position: absolute;
-    top: 20rem;
-    right: 0rem;
-    width: 200px;
-    height: auto;
+    top: 20vh;
+    right: 2vw;
+    width: clamp(60px, 6vw, 100px);
   }
 }
 
@@ -361,10 +339,37 @@
   }
   .left-half {
     margin-left: 5rem;
+    margin-top: 3rem;
     padding: 3rem;
   }
   .right-half.scroll-column {
-    padding: 6rem;
+    padding: 11rem;
     max-width: 800px;
+  }
+  .projects-section {
+    padding-bottom: 15rem;
+  }
+  .svg-group {
+    display: block;
+    pointer-events: none;
+  }
+  .svg-group-left {
+    position: absolute;
+    top: 15vh;
+    left: 2vw;
+    width: clamp(40px, 5vw, 80px);
+  }
+  .svg-group-middle {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: clamp(150px, 20vw, 240px);
+  }
+  .svg-group-right {
+    position: absolute;
+    top: 30vh;
+    right: 10vw;
+    width: clamp(60px, 6vw, 100px);
   }
 }

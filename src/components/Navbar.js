@@ -3,35 +3,37 @@ import './Navbar.css';
 import resumePDF from '../assets/SpencerChuongResume.pdf';
 
 const sectionIds = ['about-me', 'experience', 'projects'];
-const labelMap = {
-  'about-me': 'About',
+const labelMap   = {
+  'about-me':  'About',
   'experience': 'Experience',
-  'projects': 'Projects'
+  'projects':   'Projects'
 };
 
 export default function NavBar() {
   const [activeSection, setActiveSection] = useState(sectionIds[0]);
 
+  /* -------- scroll-spy keeps the right button highlighted -------- */
   useEffect(() => {
     const container = document.querySelector('.scroll-column');
     if (!container) return;
 
     const onScroll = () => {
       const containerRect = container.getBoundingClientRect();
-      let bestId = sectionIds[0];
+      let bestId     = sectionIds[0];
       let maxVisible = 0;
 
       sectionIds.forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const visibleTop = Math.max(rect.top, containerRect.top);
+        const rect          = el.getBoundingClientRect();
+        const visibleTop    = Math.max(rect.top,    containerRect.top);
         const visibleBottom = Math.min(rect.bottom, containerRect.bottom);
         const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const ratio = visibleHeight / rect.height;
+        const ratio         = visibleHeight / rect.height;
+
         if (ratio > maxVisible) {
           maxVisible = ratio;
-          bestId = id;
+          bestId     = id;
         }
       });
 
@@ -39,26 +41,35 @@ export default function NavBar() {
     };
 
     container.addEventListener('scroll', onScroll);
-    onScroll();
+    onScroll();                      // run once on mount
     return () => container.removeEventListener('scroll', onScroll);
   }, []);
 
+  /* -------- nav-button click handler -------- */
   const handleClick = id => e => {
     e.preventDefault();
     const container = document.querySelector('.scroll-column');
-    const el = document.getElementById(id);
-    if (container && el) {
-      container.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
-    } else if (el) {
+    const el        = document.getElementById(id);
+
+    if (!el) return;
+
+    if (container) {
+      /* subtract the container’s top padding so the title is visible */
+      const padTop = parseFloat(getComputedStyle(container).paddingTop) || 0;
+      container.scrollTo({
+        top:        el.offsetTop - padTop,
+        behavior: 'smooth'
+      });
+    } else {
+      /* fallback for full-page scrolling (e.g. mobile layout) */
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        {/* logo or branding here */}
-      </div>
+      <div className="navbar-left">{/* logo / branding */}</div>
+
       <div className="navbar-right">
         {sectionIds.map(id => (
           <a
@@ -70,6 +81,7 @@ export default function NavBar() {
             {labelMap[id]}
           </a>
         ))}
+
         <a
           href={resumePDF}
           target="_blank"
