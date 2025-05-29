@@ -245,11 +245,13 @@
   .section-one {
     column-gap: clamp(1rem, 2.5vw, 3rem);
     padding-inline: clamp(1rem, 2.5vw, 2rem);
+
   }
 
   /* pull the social / portrait column back to the true centre */
   .left-half {
     margin-left: 0;      /* overrides the 5-rem desktop offset   */
+    left: var(--pad-side);    /* NEW: cancel the desktop shift */
   }
 
   /* keep the text column from sliding too far right */
@@ -260,81 +262,101 @@
   }
 }
 /* —— treat wide landscape tablets / smart-displays as desktop —— */
+/* ——— Desktop & tablet-landscape (≥1024 px) ——— */
 @media (orientation: landscape) and (min-width: 1024px) {
-  html,
-  body {
-    overflow: hidden;
+
+  /* shared spacing tokens */
+  :root {
+    --pad-side: clamp(4rem, 20vw, 20rem);   /* column gap  */
+    --pad-side:  clamp(1rem, 2vw, 2.5rem); /* page gutter */
+    --col-left:  clamp(300px, 45vw, 560px);/* fixed-panel width */
+    --desktop-shift: clamp(4rem, 8vw, 12rem);
+  }
+
+  /* let the page scroll if the scrolling column grows past 100 vh */
+  html, body {
+    overflow-y: auto;
     overflow-x: hidden;
   }
+
+  /* ── two-column wrapper ─────────────────────────── */
   .section-one {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: clamp(1rem, 2vw, 3rem) !important;  /* was 2–4 rem */
-    padding-inline: clamp(1rem, 2vw, 2.5rem);       /* keeps side gutters even */
+    grid-template-columns: var(--col-left) 1fr;   /* explicit 2-col grid */
+    column-gap: var(--gap-col);
+    padding-inline: var(--pad-side);
     min-height: 100vh;
     position: relative;
-    overflow: hidden;
   }
+
+  /* ── LEFT column: fixed panel ───────────────────── */
   .left-half {
-    position: sticky;
-    height: 90vh;
+    position: fixed;               /* viewport-relative, never scrolls  */
+    top: 0;
+    left: calc(var(--pad-side) + var(--desktop-shift));         /* sit just inside the gutter         */
+
+    width: var(--col-left);
+    height: 100vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 0 !important;   /* overrides the clamp(2rem,5vw,5rem) */
+    justify-content: center;
+
+    overflow: hidden;
   }
 
-  .pic-gradient {
-    max-width: 500px;
-  }
+  .pic-gradient { max-width: 500px; }
 
-  .right-half.scroll-column {
+  /* ── RIGHT column: the only part that scrolls ──── */
+  .right-half,
+  .right-half.scroll-column {      /* cover whichever class is present   */
+    grid-column: 2 / 3;            /* live in the 2nd grid track         */
+    margin-left: calc(50vw + var(--gap-col) + var(--desktop-shift));
+    width:       calc(50vw - var(--gap-col) - var(--pad-side) - var(--desktop-shift));
     height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;         /* Firefox */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: clamp(1rem, 2vh, 3rem);
     padding: clamp(2rem, 20vh, 8rem);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    margin-inline: auto;
+    box-sizing: border-box;
   }
-  .right-half.scroll-column::-webkit-scrollbar {
-    display: none;
-  }
+  .right-half::-webkit-scrollbar { display: none; }
+
+  /* inside widths stay the same */
   .about-me-section,
   .experience-section,
   .projects-section {
     width: 100%;
-    max-width: clamp(300px, 30vw, 400px);
+    max-width: clamp(400px, 40vw, 500px);
   }
-  .projects-section {
-    padding-bottom: clamp(10rem, 10vh, 15rem);
-  }
-  .social-row {
-    display: none;
-  }
+  .projects-section { padding-bottom: clamp(10rem, 10vh, 15rem); }
 
+  /* hide the sidebar icons at this size */
+  .social-row { display: none; }
+
+  /* cards & hover effects (unchanged) */
   .project-card {
     position: relative;
     overflow: visible;
     transition: box-shadow 0.3s ease;
-    /* initialize the CSS variable */
     --hover-shadow-color: var(--color-primary);
   }
+  .project-card:hover { box-shadow: 8px 8px 0 0 var(--hover-shadow-color); }
 
-  .project-card:hover {
-    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
-  }
   .experience-card,
   .project-card {
-    width: 100%;        /* fill the column */
-    max-width: none;    /* lift the 400 px ceiling */
-    margin: 0 0 1.5rem; /* align left; keep bottom spacing */
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1.5rem;
   }
 }
+
 
 @media (orientation: landscape) and (min-width: 2000px) {
   html,
@@ -473,6 +495,13 @@
 
 /* —— iPad Pro landscape (1024 – 1366 px) ——————————— */
 @media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
+
+  /* nudge both columns a little left by shrinking the desktop shift */
+  :root {
+    --desktop-shift: 1.5rem;   /* tweak: 0 rem (none) → 1–2 rem gentle push */
+  }
+
+
   /* cancel the desktop offset + centre the intro block */
   .left-half {
     margin-left: 0 !important;     /* override every earlier rule */

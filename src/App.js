@@ -17,6 +17,8 @@ import FirstSection from './components/FirstSection';
  */
 function App() {
 
+// App.js  ── ADD THIS       // already present – just here for context
+
 
 
   return (
