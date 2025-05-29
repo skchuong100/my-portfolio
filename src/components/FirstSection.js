@@ -6,6 +6,7 @@ import linkedinIcon  from '../assets/linkedinWhite.png';
 import mailIcon      from '../assets/mailWhite.png';
 import spencerPhoto  from '../assets/spencerPhoto.PNG';
 import gradientImage from '../assets/gradient1.png';
+import gradientBlob  from '../assets/gradientBlob.svg';
 
 // ProjectCard component toggles hover-shadow color and links to GitHub repo
 function ProjectCard({ title, description, tags, url }) {
@@ -68,11 +69,11 @@ export default function FirstSection() {
 
       <div className="left-half">
         <div className="pic-gradient">
-          <img
-            src={gradientImage}
-            alt="Gradient Background"
-            className="gradient-bg"
-          />
+ <img
+   src={gradientBlob}
+   alt="Decorative blob"
+   className="gradient-bg"
+ />
           <img
             src={spencerPhoto}
             alt="Spencer Chuong"
@@ -81,26 +82,22 @@ export default function FirstSection() {
         </div>
 
         <div className="hero">
-          <h1>SPENCER CHUONG</h1>
+          <h1>Spencer Chuong</h1>
           <p className="subtitle">
-            An aspiring <span className="highlight">software developer</span>
+            An aspiring software developer
           </p>
           <p className="tagline">Making one project at a time</p>
         </div>
 
-        <div className="social-row">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener">
-            <img src={githubIcon} alt="GitHub" />
-          </a>
-          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener">
-            <img src={instagramIcon} alt="Instagram" />
-          </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
-            <img src={linkedinIcon} alt="LinkedIn" />
-          </a>
-          <a href="mailto:spencerchuong0@gmail.com">
-            <img src={mailIcon} alt="Email" />
-          </a>
+<div className="social-row">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GH</a>
+          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">IG</a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LI</a>
+        </div>
+
+        {/* — Plain-text e-mail under social links — */}
+        <div className="email-row">
+          <a href="mailto:spencerchuong0@gmail.com">spencerchuong0@gmail.com</a>
         </div>
       </div>
 

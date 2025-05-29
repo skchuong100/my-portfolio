@@ -16,9 +16,10 @@
 
 :root {
   --color-bg: #151515;
-  --color-primary: #7579FA;
-  --color-accent: #FFA500;
-  --color-text: #FFFFFF;
+  --color-primary: #F4D8B3;
+  --color-accent: #161417;
+  --color-primary-text: #FFFFFF;
+  --color-accent-text: #161417;
 }
 
 /* ——— Mobile-first layout ——— */
@@ -52,7 +53,7 @@
   width: 80%;
   max-width: 400px;
   aspect-ratio: 1 / 1;
-  margin: 5rem auto 3rem;
+  margin: 2rem auto 3rem;
   overflow: visible;
 }
 .pic-gradient .gradient-bg {
@@ -78,42 +79,64 @@
 /* ——— Hero text ——— */
 .hero {
   text-align: center;
-  margin-bottom: 1rem;
+  color: var(--color-accent-text);
+  font-family: 'DMMono-Medium', monospace;
 }
 .hero h1 {
   margin: 0.5rem 0;
   font-size: 2rem;
   letter-spacing: 0.05em;
-  color: var(--color-primary);
-  font-family: 'DMMono-Medium', monospace;
+
 }
 .hero .subtitle {
   font-size: 1rem;
-  color: var(--color-text);
-  font-family: 'DMMono-Regular', monospace;
-}
-.hero .subtitle .highlight {
-  color: var(--color-accent);
-}
-.hero .tagline {
-  margin-top: 0.25rem;
-  font-size: 0.85rem;
-  color: var(--color-text);
-  font-family: 'DMMono-Regular', monospace;
+
 }
 
-/* ——— Social icons ——— */
+.hero .tagline {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+
+}
+
 .social-row {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 0.5rem 0 1rem;
+  gap: 3rem;
+  margin: 0.5rem 0 0.25rem;
 }
-.social-row img {
-  width: 1.5rem;
-  height: auto;
+
+.social-row a {
+  font-family: 'DMMono-Medium', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: var(--coloer-text);
+  background-clip: text;
+        /* fallback */
+  transition: opacity 0.25s ease;
 }
+
+.social-row a:hover { opacity: 0.65; }
+
+/* ——— E-mail line ——— */
+.email-row {
+  color: var(--color-accent-text);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.email-row a {
+  font-family: 'DMMono-Medium', monospace;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+
+
+/* (old icon-only rule can go) */
+.social-row img { display: none; }
 
 /* ——— Section wrappers ——— */
 .about-me-section,
@@ -125,13 +148,9 @@
 /* ——— Section titles ——— */
 .section-title {
   font-size: 1.5rem;
-  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-accent-text);
   display: inline-block;
-  font-family: 'DMMono-Regular', monospace;
+  font-family: 'DMMono-Medium', monospace;
 }
 
 /* ——— About Me content ——— */
@@ -139,10 +158,10 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  font-family: 'DMMono-Regular', monospace;
+  font-family: 'DMMono-Medium', monospace;
 }
 .about-me-text {
-  color: var(--color-text);
+  color: var(--color-accent-text);
   line-height: 1.5;
   margin: 0;
 }
@@ -154,7 +173,7 @@
   margin: 0 auto 2rem;
 }
 .experience-card {
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: var(--color-text);
   border-radius: 1rem;
   padding: 1.25rem;
@@ -200,21 +219,14 @@
 }
 .tag {
   display: inline-block;
-  color: var(--color-text);
+  color: var(--color-accent-text);
   font-family: 'DMMono-Regular', monospace;
   font-size: 0.85rem;
   padding: 0.25rem 0.75rem;
   border-radius: 0.75rem;
+   background: var(--color-primary);
 }
-.tag.a {
-  background: linear-gradient(135deg, #FBAE6A, #FFAB66);
-}
-.tag.b {
-  background: linear-gradient(135deg, #7579FA, #A68BFF);
-}
-.tag.c {
-  background: linear-gradient(135deg, #FBAE6A, #FFAB66);
-}
+
 
 
 
@@ -308,6 +320,10 @@
 
   .pic-gradient { max-width: 500px; }
 
+  .email-row{
+    display: none;
+  }
+
   /* ── RIGHT column: the only part that scrolls ──── */
   .right-half,
   .right-half.scroll-column {      /* cover whichever class is present   */
@@ -340,14 +356,18 @@
   /* hide the sidebar icons at this size */
   .social-row { display: none; }
 
-  /* cards & hover effects (unchanged) */
-  .project-card {
-    position: relative;
-    overflow: visible;
-    transition: box-shadow 0.3s ease;
-    --hover-shadow-color: var(--color-primary);
-  }
-  .project-card:hover { box-shadow: 8px 8px 0 0 var(--hover-shadow-color); }
+.project-card {
+  position: relative;
+  overflow: visible;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  /* feels like the card lifts up and toward the reader */
+  transform: translate(-4px, -4px) scale(1.04);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);   /* optional soft shadow */
+}
 
   .experience-card,
   .project-card {
@@ -419,7 +439,7 @@
     background-clip: text;
     color: transparent;
     display: inline-block;
-    font-family: 'DMMono-Regular', monospace;
+    font-family: 'DMMono-Medium', monospace;
   }
 
   /* ——— About Me content ——— */
@@ -498,6 +518,13 @@
 }
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .email-row a:hover,
+  .email-row a:focus {
+    text-decoration: underline;
+  }
+}
+
 /* —— iPad Pro landscape (1024 – 1366 px) ——————————— */
 @media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {
 
@@ -527,7 +554,7 @@
     max-width: 760px;
     padding: clamp(4rem, 7vh, 6rem);
   }
-  .social-row {
+  .email-row {
     display: flex !important;        /* beats the earlier “display: none” */
     justify-content: center;
     gap: 1rem;
