@@ -364,6 +364,10 @@
     overflow: hidden;
     overflow-x: hidden;
   }
+  :root {
+    /* previous clamp was 300-560 px; bump the max to 720 px on huge monitors      */
+    --col-left: clamp(400px, 38vw, 720px);
+  }
   .section-one {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -384,8 +388,8 @@
   }
 
   .pic-gradient {
-    max-width: 700px;
     margin: 7rem auto 5rem;
+    max-width: clamp(620px, 45vw, 900px);
   }
 
   .pic-gradient .profile-pic-overlay{
@@ -395,6 +399,7 @@
   .hero h1 {
   font-size: 3rem;
   }
+
   .hero .subtitle {
     font-size: 1.5rem;
 
