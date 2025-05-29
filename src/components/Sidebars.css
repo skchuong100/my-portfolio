@@ -121,8 +121,15 @@
     margin-top: 20px; /* Adjust bottom margin as needed */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .sidebar {
-    display: flex; /* preserves your left/right sidebar layout */
+    display: flex;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 820px) and (max-width: 1366px) {
+
+  .sidebar {
+    display: none !important;      /* overrides the ≥768 px “display:flex” rule :contentReference[oaicite:0]{index=0} */
   }
 }

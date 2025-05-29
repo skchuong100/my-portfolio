@@ -82,8 +82,15 @@ body::-webkit-scrollbar {
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .navbar {
-    display: flex; /* or whatever your desktop layout uses */
+    display: flex; /* or block, matching your original desktop style */
+  }
+}
+@media (orientation: landscape) and (min-width: 820px) and (max-width: 1366px) {
+
+  /* top navigation bar */
+  .navbar {
+    display: none !important;      /* overrides the ≥768 px “display:flex” rule :contentReference[oaicite:0]{index=0} */
   }
 }
