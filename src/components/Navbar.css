@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #1E1E1E; /* Matches your first and third section color */
+    background-color: var(--color-primary); /* Matches your first and third section color */
     color: white;
     display: none;
     justify-content: space-between;
@@ -32,25 +32,7 @@ body::-webkit-scrollbar {
     z-index: 1000;
 }
 
-/* Logo link styling */
-.navbar-left .logo {
-    font-size: 50px;
-    font-weight: 400; /* Regular weight */
-    color: #7579FA; /* Matches the second and fourth section color */
-    font-family: "Tourney", sans-serif;
-    background-size: 100% 100%; /* Gradually expand the background to cover the text */
-    text-decoration: none; /* Remove underline */
 
-    margin-left: 20px;
-}
-
-/* Ensure the logo link doesn’t get underlined on hover */
-.navbar-left .logo:hover {
-    text-decoration: none; /* No underline on hover */
-    font-weight: 900; /* Regular weight */
-    background-size: 100% 100%; /* Gradually expand the background to cover the text */
-
-}
 
 
 .navbar-right {
@@ -64,14 +46,12 @@ body::-webkit-scrollbar {
 .navbar-right a {
   text-decoration: none;
   background: none;
-  -webkit-text-fill-color: white;  /* default text color */
+  -webkit-text-fill-color: var(--color-accent-text);  /* default text color */
 }
 
 .navbar-right a:hover,
 .navbar-right a.active {
-  background: linear-gradient(145deg, #7579FA, #FBAE6A);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
 }
 
 
