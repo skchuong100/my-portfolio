@@ -300,7 +300,6 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     margin-inline: auto;
-    max-width: 40px;
   }
   .right-half.scroll-column::-webkit-scrollbar {
     display: none;
@@ -328,9 +327,149 @@
 
   .project-card:hover {
     box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
-}
+  }
+  .experience-card,
+  .project-card {
+    width: 100%;        /* fill the column */
+    max-width: none;    /* lift the 400 px ceiling */
+    margin: 0 0 1.5rem; /* align left; keep bottom spacing */
+  }
 }
 
+@media (orientation: landscape) and (min-width: 2000px) {
+  html,
+  body {
+    overflow: hidden;
+    overflow-x: hidden;
+  }
+  .section-one {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(1rem, 2vw, 3rem) !important;  /* was 2–4 rem */
+    padding-inline: clamp(1rem, 2vw, 2.5rem);       /* keeps side gutters even */
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .left-half {
+    position: sticky;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rem;
+    margin-left: 0 !important;   /* overrides the clamp(2rem,5vw,5rem) */
+  }
+
+  .pic-gradient {
+    max-width: 700px;
+    margin: 7rem auto 5rem;
+  }
+
+  .pic-gradient .profile-pic-overlay{
+    max-width: 500px;
+  }
+
+  .hero h1 {
+  font-size: 3rem;
+  }
+  .hero .subtitle {
+    font-size: 1.5rem;
+
+  }
+
+  .hero .tagline {
+    font-size: 1.35rem;
+
+  }
+
+  /* ——— Section titles ——— */
+  .section-title {
+    font-size: 2.0rem;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+    font-family: 'DMMono-Regular', monospace;
+  }
+
+  /* ——— About Me content ——— */
+  .about-me-content {
+    font-size: 1.5rem;
+  }
+
+
+
+
+  .experience-card .job-title {
+    font-size: 1.5rem;
+
+  }
+  .experience-card .job-dates {
+    font-size: 1.5rem;
+
+  }
+  .experience-card .job-description {
+    font-size: 1.5rem;
+
+  }
+  .project-card .project-name {
+    font-size: 1.5rem;
+
+  }
+  .project-card .project-description {
+    font-size: 1.5rem;
+
+  }
+
+  .tag {
+    font-size: 1.2rem;
+
+  }
+
+  .right-half.scroll-column {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1rem, 2vh, 3rem);
+    padding: clamp(2rem, 20vh, 8rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    margin-inline: auto;
+  }
+  .right-half.scroll-column::-webkit-scrollbar {
+    display: none;
+  }
+  .about-me-section,
+  .experience-section,
+  .projects-section {
+    width: 70%;
+    max-width: 100%;
+  }
+  .projects-section {
+    padding-bottom: clamp(10rem, 30vh, 20rem);
+  }
+  .social-row {
+    display: none;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: visible;
+    transition: box-shadow 0.3s ease;
+    /* initialize the CSS variable */
+    --hover-shadow-color: var(--color-primary);
+  }
+
+  .project-card:hover {
+    box-shadow: 8px 8px 0 0 var(--hover-shadow-color);
+}
+}
 
 /* —— iPad Pro landscape (1024 – 1366 px) ——————————— */
 @media (orientation: landscape) and (min-width: 1024px) and (max-width: 1366px) {

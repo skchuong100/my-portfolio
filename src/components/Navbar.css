@@ -94,3 +94,9 @@ body::-webkit-scrollbar {
     display: none !important;      /* overrides the ≥768 px “display:flex” rule :contentReference[oaicite:0]{index=0} */
   }
 }
+
+@media (orientation: landscape) and (min-width: 2000px) {
+  .navbar{
+    font-size: 1.5rem;
+  }
+}
