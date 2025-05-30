@@ -1,4 +1,3 @@
-import React, { useRef, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Sidebars from './components/Sidebars';
 
@@ -6,8 +5,7 @@ import Sidebars from './components/Sidebars';
 import './components/FirstSection.css';
 import './App.css';
 
-import spencerPhoto from './assets/spencerPhoto.PNG';
-import gradientImage from './assets/gradient1.png';
+
 import FirstSection from './components/FirstSection';
 
 /**
