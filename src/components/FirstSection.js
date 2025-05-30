@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import './FirstSection.css';
-import githubIcon    from '../assets/github-signWhite.png';
-import instagramIcon from '../assets/instagramWhite.png';
-import linkedinIcon  from '../assets/linkedinWhite.png';
-import mailIcon      from '../assets/mailWhite.png';
 import spencerPhoto  from '../assets/spencerPhoto.PNG';
-import gradientImage from '../assets/gradient1.png';
+
 import gradientBlob  from '../assets/gradientBlob.svg';
 
 // ProjectCard component toggles hover-shadow color and links to GitHub repo
