@@ -23,7 +23,7 @@
 .right-sidebar{ right: 0; }
 
 /* show the bars only on desktop‑ish viewports */
-@media (min-width: 1025px) { .sidebar{display:flex;} }
+@media (min-width: 1024px) { .sidebar{display:flex;} }
 @media (orientation: landscape) and (min-width:820px) and (max-width:1366px){
   .sidebar{display:none !important;}
 }
@@ -86,4 +86,29 @@
   width:3px;
   height:150px;
   background: var(--color-accent);
+}
+
+@media (orientation: landscape) and (min-width: 2000px) {
+  .sidebar {
+    top: auto !important;          /* cancel the original top:0 */
+    bottom: 4rem !important;       /* << choose the hover-height here */
+    height: auto !important;       /* shrink-wrap to its contents     */
+    justify-content: center !important;  /* normal spacing inside     */
+  }
+  .icon-container,
+  .email-container {
+    margin-top: 0;                 /* or tweak to taste, e.g. 2rem */
+  }
+  .email-text{
+    font-size: 1.5rem;
+  }
+  .icon-container{
+    gap:30px
+  }
+  .sidebar-link{
+    font-size: 1.5rem;
+  }
+  .gradient-line {
+    margin-top: 1.5rem;            /* ≈24 px – adjust as you like */
+  }
 }
