@@ -86,9 +86,9 @@ export default function FirstSection() {
         </div>
 
 <div className="social-row">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GH</a>
-          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">IG</a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LI</a>
+          <a href="https://github.com/skchuong100" target="_blank" rel="noopener noreferrer">GH</a>
+          <a href="https://www.instagram.com/chuongspencer48/" target="_blank" rel="noopener noreferrer">IG</a>
+          <a href="https://www.linkedin.com/in/spencer-chuong-b258531ba/" target="_blank" rel="noopener noreferrer">LI</a>
         </div>
 
         {/* — Plain-text e-mail under social links — */}
