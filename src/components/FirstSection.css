@@ -283,12 +283,19 @@
     --pad-side:  clamp(1rem, 2vw, 2.5rem); /* page gutter */
     --col-left:  clamp(300px, 45vw, 560px);/* fixed-panel width */
     --desktop-shift: clamp(4rem, 8vw, 12rem);
+    --desk-extra: 3rem;
+    /* distance from each viewport edge to the content */
+    --page-gutter: clamp(4rem, 6vw, 7rem);
+
+    /* you already use --gap-col in section-one;       *
+     * define it here in case it was missing           */
+    --gap-col: clamp(2rem, 4vw, 4rem);
   }
 
   /* let the page scroll if the scrolling column grows past 100 vh */
   html, body {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
   }
 
   /* ── two-column wrapper ─────────────────────────── */
@@ -305,8 +312,7 @@
   .left-half {
     position: fixed;               /* viewport-relative, never scrolls  */
     top: 0;
-    left: calc(var(--pad-side) + var(--desktop-shift));         /* sit just inside the gutter         */
-
+    left: clamp(11rem, 13vw, 15rem) !important;
     width: var(--col-left);
     height: 100vh;
 
@@ -327,10 +333,21 @@
   /* ── RIGHT column: the only part that scrolls ──── */
   .right-half,
   .right-half.scroll-column {      /* cover whichever class is present   */
-    grid-column: 2 / 3;            /* live in the 2nd grid track         */
-    margin-left: calc(50vw + var(--gap-col) + var(--desktop-shift));
-    width:       calc(50vw - var(--gap-col) - var(--pad-side) - var(--desktop-shift));
-    height: 100vh;
+    height: 100vh  !important;   /* full viewport height   */
+    overflow-y: auto !important; /* bring back scrollbar   */
+    grid-column: 2 / 3;
+    margin-inline: 0 !important;
+
+    margin-inline: 0 !important;                  /* undo auto-centring   */
+    margin-left: calc(var(--page-gutter)              /* gutter   */
+                      + var(--col-left)               /* picture  */
+                      - 25rem) !important;   /* gap      */
+
+    /* shrink to keep the same gutter on the right     */
+    width:  calc(100vw                                 /* full width */
+                - 2*var(--page-gutter)                 /* both gutters */
+                - var(--col-left)                      /* picture col  */
+                - var(--gap-col)) !important;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
@@ -374,6 +391,28 @@
     width: 100%;
     max-width: none;
     margin: 0 0 1.5rem;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   FORCE both halves to center on ANY 1367px–1920px landscape
+   (even if other rules try to push them around)
+   ───────────────────────────────────────────────────────────── */
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1920px) {
+
+  /* 1) Push left-half to center of its grid cell */
+  .section-one .left-half {
+    margin-left: -5.5rem !important; /*: tweak this value (e.g. -1rem, -2rem) */
+    justify-content: center !important;
+  }
+
+  /* 2) Pull right-half (with or without .scroll-column) into the same center */
+  .section-one .right-half,
+  .section-one .right-half.scroll-column {
+    margin-inline: auto !important;   /* center horizontally */
+    max-width: 800px      !important; /* keep same width as earlier */
+    padding: clamp(4rem, 7vh, 6rem) !important; /* preserve padding */
   }
 }
 
@@ -663,24 +702,33 @@
   }
 }
 
-/* —— Super-wide iPad / 14-in “Pro Max” in landscape ————————— */
-@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1920px) {
-  .left-half {
-    margin-left: 0 !important;   /* override desktop offset */
-    justify-content: center;     /* keep avatar/hero block centred */
+/* ═══ Landscape tablets (≈992 – 1366 px) – centred gutter fix ═══ */
+@media (orientation: landscape) and (min-width: 992px) and (max-width: 1366px) {
+
+  /* 1 ▸ one knob: side gutter for this range only */
+  :root{
+    --tablet-gutter: clamp(2rem, 3vw, 3.5rem);   /* tweak if needed */
   }
 
-  .section-one {                 /* balance the two columns */
-    column-gap: clamp(1rem, 2.5vw, 4rem);
-    padding-inline: clamp(1rem, 3vw, 2.5rem);
+  /* 2 ▸ LEFT column – park it exactly at the gutter */
+  .left-half{
+    left: var(--tablet-gutter) !important;
   }
 
-  .right-half.scroll-column {    /* readable line-lengths */
-    margin-inline: auto;
-    max-width: 800px;
-  }
+  /* 3 ▸ RIGHT column – start after the fixed panel + gap */
+  .right-half,
+  .right-half.scroll-column{
+    margin-inline: 0 !important;  /* cancel previous auto-centring      */
 
+
+    /* keep the same gutter on the right */
+    width: calc(100vw
+                - 2*var(--tablet-gutter)           /* both gutters      */
+                - var(--col-left)
+                - var(--gap-col)) !important;
+  }
 }
+
 
 
 /* ——— Phones (SM): 576px to 767px ——— */
