@@ -269,7 +269,7 @@
   /* keep the text column from sliding too far right */
   .right-half.scroll-column {
     margin-inline: auto; /* centre inside its grid cell          */
-    padding: clamp(4rem, 7vh, 6rem);
+   /* padding: clamp(4rem, 7vh, 6rem); */
     max-width: 760px;    /* prevents ultra-wide line lengths     */
   }
 }
@@ -395,26 +395,6 @@
 }
 
 
-/* ─────────────────────────────────────────────────────────────
-   FORCE both halves to center on ANY 1367px–1920px landscape
-   (even if other rules try to push them around)
-   ───────────────────────────────────────────────────────────── */
-@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1920px) {
-
-  /* 1) Push left-half to center of its grid cell */
-  .section-one .left-half {
-    margin-left: -5.5rem !important; /*: tweak this value (e.g. -1rem, -2rem) */
-    justify-content: center !important;
-  }
-
-  /* 2) Pull right-half (with or without .scroll-column) into the same center */
-  .section-one .right-half,
-  .section-one .right-half.scroll-column {
-    margin-inline: auto !important;   /* center horizontally */
-    max-width: 800px      !important; /* keep same width as earlier */
-    padding: clamp(4rem, 7vh, 6rem) !important; /* preserve padding */
-  }
-}
 
 
 @media (orientation: landscape) and (min-width: 2000px) {
@@ -587,7 +567,7 @@
   .right-half.scroll-column {
     margin-inline: auto;
     max-width: 760px;
-    padding: clamp(4rem, 7vh, 6rem);
+    padding: clamp(4rem, 6.5vh, 5rem);
   }
   .email-row {
     display: flex !important;        /* beats the earlier “display: none” */
@@ -702,32 +682,76 @@
   }
 }
 
+
 /* ═══ Landscape tablets (≈992 – 1366 px) – centred gutter fix ═══ */
-@media (orientation: landscape) and (min-width: 992px) and (max-width: 1366px) {
 
-  /* 1 ▸ one knob: side gutter for this range only */
-  :root{
-    --tablet-gutter: clamp(2rem, 3vw, 3.5rem);   /* tweak if needed */
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1920px) {
+  /* … */
+  .left-half {
+    margin-left: 0 !important;
+    justify-content: center;
   }
-
-  /* 2 ▸ LEFT column – park it exactly at the gutter */
-  .left-half{
-    left: var(--tablet-gutter) !important;
+  .section-one {
+    column-gap: clamp(1rem, 2.5vw, 4rem);
+    padding-inline: clamp(1rem, 3vw, 2.5rem);
   }
-
-  /* 3 ▸ RIGHT column – start after the fixed panel + gap */
-  .right-half,
-  .right-half.scroll-column{
-    margin-inline: 0 !important;  /* cancel previous auto-centring      */
-
-
-    /* keep the same gutter on the right */
-    width: calc(100vw
-                - 2*var(--tablet-gutter)           /* both gutters      */
-                - var(--col-left)
-                - var(--gap-col)) !important;
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 800px;
   }
 }
+
+/* ——— Tablet-Landscape: 992 px → 1366 px ——— */
+@media (orientation: landscape) and (min-width: 992px) and (max-width: 1366px) {
+  /* 1) Two-column grid with slightly tighter gutters */
+  .section-one {
+    display: grid;
+    grid-template-columns: var(--col-left) 1fr;
+    column-gap: clamp(1rem, 2.5vw, 3rem);
+    padding-inline: clamp(1rem, 2.5vw, 2rem);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* 2) CENTER the left half (avatar) inside the viewport */
+  .section-one .left-half {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--col-left);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* 3) CENTER the right half (text) in its grid cell */
+  .section-one .right-half,
+  .section-one .right-half.scroll-column {
+    grid-column: 2 / 3;
+    margin-inline: auto;        /* center in its cell */
+    max-width: 800px;           /* keep lines readable */
+    overflow-y: auto;
+    height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1rem, 2vh, 3rem);
+
+    box-sizing: border-box;
+  }
+  .section-one .right-half::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
 
 
 
@@ -754,17 +778,39 @@
   }
 }
 
-/* ——— Laptops (LG): 992px to 1199px ——— */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .section-one {
-    column-gap: 4rem;
-    padding-inline: 2rem;
+
+  /* ═════════ Tablet-landscape (992 – 1366 px) ═════════ */
+@media (orientation: landscape) and (min-width: 992px) and (max-width: 1366px) {
+
+  /* shared knob – no desktop shove in this range */
+  :root{ --desktop-shift: 0rem; }
+
+  /* LEFT fixed panel hugs the normal gutter */
+  .section-one .left-half{
+    position: fixed;
+    top: 0;
+    left: var(--pad-side) !important;   /* override earlier clamp() */
+    transform: none !important;         /* cancel translateX(-50%)  */
+
   }
-  .right-half.scroll-column {
-    padding: 5rem;
+
+  /* RIGHT scrolling column starts after fixed panel + gap,
+     then centres with a max-width so lines stay readable */
+  .section-one .right-half,
+  .section-one .right-half.scroll-column{
+    grid-column: 2 / 3;
+    margin-inline: 0 !important;
+
+    margin-left: calc(
+      var(--pad-side) + 3rem
+    ) !important;
+    max-width: 800px;
   }
-  .social-row {
-    display: flex;
+
+  /* tighten overall gutter so halves appear closer together */
+  .section-one{
+    column-gap: clamp(1rem, 2.5vw, 3rem) !important;
+    padding-inline: clamp(1rem, 2.5vw, 2rem) !important;
   }
 }
 
@@ -787,5 +833,37 @@
     width: 95%;        /* fill the column */
     max-width: none;    /* lift the 400 px ceiling */
     margin: 0 0 1.5rem; /* align left; keep bottom spacing */
+  }
+}
+
+/* ═══  Large-tablet landscape (1367 – 1439 px)  ═══ */
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1439px) {
+
+  /* 1 ▸ turn off the desktop push */
+  :root { --desktop-shift: 0rem; }
+
+  /* 2 ▸ LEFT column – centre on screen */
+  .section-one .left-half{
+    position: fixed;
+    top: 0;
+    left: 100%;                      /* centre of viewport             */
+    transform: translateX(-15%);    /* pull own width back by ½       */
+    margin-left: 0 !important;      /* cancel any earlier offsets     */
+    justify-content: center;
+  }
+
+  /* 3 ▸ RIGHT column – centre in its grid cell */
+  .section-one .right-half,
+  .section-one .right-half.scroll-column{
+    grid-column: 2 / 3;
+    margin: 0 auto !important;      /* centre horizontally            */
+    max-width: 500px;               /* readable line length           */
+    padding: clamp(4rem, 7vh, 6rem);
+  }
+
+  /* 4 ▸ tighten grid gutters so halves sit closer together */
+  .section-one{
+    column-gap: clamp(1rem, 2.5vw, 3rem) !important;
+    padding-inline: clamp(1rem, 2.5vw, 2rem);
   }
 }
