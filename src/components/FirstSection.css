@@ -867,3 +867,14 @@
     padding-inline: clamp(1rem, 2.5vw, 2rem);
   }
 }
+
+/* ═════════════════════════════════════════════
+   Hide the navbar on any PORTRAIT-mode screen
+   (desktop monitor rotated to 1080 × 1920, tall
+   tablets on a stand, etc.)
+   ═════════════════════════════════════════════ */
+@media (orientation: portrait) {
+  .navbar {
+    display: none !important;
+  }
+}
