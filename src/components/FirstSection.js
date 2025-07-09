@@ -43,6 +43,13 @@ function ProjectCard({ title, description, tags, url }) {
 export default function FirstSection() {
   const projects = [
     {
+      title: 'Hybrid DeblurNet',
+      description:
+        'Designed and trained a 7 M-parameter two-scale U-Net with Reformer attention and PatchGAN fine-tuning that restores a sharp frame from 7-frame synthetic bursts via a progressive-resolution curriculum and multi-objective SSIM + edge-L1 + LPIPS loss per burst.',
+      tags: ['Python', 'PyTorch', 'Reformer', 'U-Net'],
+      url: 'https://github.com/skchuong100/Deblurring',
+    },
+    {
       title: 'InterMeet',
       description:
         'An Android-based matching app where people connect with each other and are given a map of places and events to meet at. Our motto is "We INTERmediate the MEET".',
