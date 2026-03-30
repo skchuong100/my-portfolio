@@ -101,7 +101,7 @@
   text-decoration:none;
 }
 @media (hover:hover) and (pointer:fine){
-  .email-text:hover,.email-text:focus{ text-decoration:underline; }
+  .email-text:hover,.email-text:focus{ opacity:.65; }
 }
 
 /* ——— Decorative gradient line ——— */
