@@ -282,7 +282,7 @@
     --pad-side: clamp(4rem, 20vw, 20rem);   /* column gap  */
     --pad-side:  clamp(1rem, 2vw, 2.5rem); /* page gutter */
     --col-left:  clamp(300px, 45vw, 560px);/* fixed-panel width */
-    --desktop-shift: clamp(4rem, 8vw, 12rem);
+    --desktop-shift: clamp(22rem, 14vw, 32rem);
     --desk-extra: 3rem;
     /* distance from each viewport edge to the content */
     --page-gutter: clamp(4rem, 6vw, 7rem);
@@ -339,9 +339,7 @@
     margin-inline: 0 !important;
 
     margin-inline: 0 !important;                  /* undo auto-centring   */
-    margin-left: calc(var(--page-gutter)              /* gutter   */
-                      + var(--col-left)               /* picture  */
-                      - 25rem) !important;   /* gap      */
+    margin-left: calc(var(--page-gutter) + var(--col-left) - var(--desktop-shift)) !important; /* gap      */
 
     /* shrink to keep the same gutter on the right     */
     width:  calc(100vw                                 /* full width */
@@ -574,6 +572,9 @@
     justify-content: center;
     gap: 1rem;
   }
+  .social-row {
+    display: flex;
+  }
 }
 
 /* —— ALL portrait tablets (iPad mini → 12.9-in Pro) ————————— */
@@ -682,6 +683,25 @@
   }
 }
 
+/* —— Laptop landscape (1367px – 1600px): pull text column left & cap width —— */
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1600px) {
+  :root {
+    --desktop-shift: clamp(36rem, 30vw, 34rem);
+  }
+  .right-half.scroll-column {
+    margin-left: calc(var(--page-gutter) + var(--col-left) - var(--desktop-shift)) !important;
+    max-width: 820px; /* keeps lines readable */
+  }
+  .section-one {
+    column-gap: clamp(1rem, 2.2vw, 3rem);
+    padding-inline: clamp(1rem, 2.5vw, 2rem);
+  }
+  .left-half {
+    margin-left: 0 !important;
+    justify-content: center;
+  }
+}
+
 
 /* ═══ Landscape tablets (≈992 – 1366 px) – centred gutter fix ═══ */
 
@@ -690,6 +710,25 @@
   .left-half {
     margin-left: 0 !important;
     justify-content: center;
+  }
+  .section-one {
+    column-gap: clamp(1rem, 2.5vw, 4rem);
+    padding-inline: clamp(1rem, 3vw, 2.5rem);
+  }
+  .right-half.scroll-column {
+    margin-inline: auto;
+    max-width: 800px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1367px) and (max-width: 1600px) {
+  /* … */
+  .left-half {
+    margin-left: 0 !important;
+    justify-content: center;
+    /* cancel the desktop offset + centre the intro block */
+    left: clamp(11rem, 10vw, 15rem) !important;
+           /* vertical centring when sticky */
   }
   .section-one {
     column-gap: clamp(1rem, 2.5vw, 4rem);

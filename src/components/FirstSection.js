@@ -109,13 +109,13 @@ export default function FirstSection() {
           <h2 className="section-title">About me</h2>
           <div className="about-me-content">
             <p className="about-me-text">
-              I’m a recent computer science graduate from California State University, Long Beach. I’m passionate about making cool and niche programs with excellent user interfaces.
+              I’m a computer science graduate from California State University, Long Beach. I’m passionate about making cool and niche programs with excellent user interfaces.
             </p>
             <p className="about-me-text">
                 In my role as a Patent Examiner at the United States Patent and Trademark Office, I assessed AI/ML patent applications by reviewing their technical disclosures to ensure methods and systems were described clearly and completely for implementation. I confirmed that procedural workflows and data‐handling processes met the enablement and written‐description standards. At the same time, I applied eligibility, novelty, and non‐obviousness analyses.
             </p>
             <p className="about-me-text">
-              Currently, I’m open to any position in full stack development, ranging from backend to front end. I am also studying other aspects of computer science on the side for functionalities in my projects.
+              Currently, I am a Full-Stack Developer responsible for the end-to-end integration of front-end and back-end integration of features for an upcoming e-commerce website called Koios Marketplace.
             </p>
             <p className="about-me-text">
               In my spare time, I love to do photography, watch films/shows, and read.
@@ -125,6 +125,17 @@ export default function FirstSection() {
 
         <div id="experience" className="experience-section">
           <h2 className="section-title">Experience</h2>
+          <div className="experience-card">
+              <h3 className="job-title">Full-stack Developer</h3>
+              <p className="job-dates">2025 – Present</p>
+              <p className="job-description">
+                Responsible for the development and maintenance of both front-end and back-end applications, debugging, and collaborating with other team members to improve overall application performance.
+              </p>
+              <p></p>
+              <p className="job-description">
+                Implemented end-to-end page features across vendor and consumer experiences, social features (profile sections, content upload/showcase, moodboards, comments/interactions), search/filtering, responsive UI/UX improvements, and routing/API integrations.
+              </p>
+          </div>
           <div className="experience-card">
             <h3 className="job-title">Patent Examiner</h3>
             <p className="job-dates">2024 – 2025</p>
