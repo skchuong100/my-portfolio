@@ -120,10 +120,10 @@ export default function FirstSection() {
               I’m a computer science graduate from California State University, Long Beach and a full-stack developer focused on building practical, user-friendly web applications.
             </p>
             <p className="about-me-text">
-              I currently work at Homigo, where I develop and maintain features across consumer, service-provider, and administrative workflows. My work includes marketplace functionality, onboarding, payments, notifications, service-area matching, reviews, and responsive UI improvements using Next.js, TypeScript, Node.js, PostgreSQL/Supabase, and Stripe.
+              I currently work at Koios Marketplace, where I develop end-to-end features across vendor, consumer, and social experiences for an e-commerce platform. My work includes building vendor dashboards, financial and user analytics, product listings, and other marketplace functionality. I've also taken on a team leadership role, helping coordinate development and conduct code reviews.
             </p>
             <p className="about-me-text">
-              Previously, I worked at Koios Marketplace, where I built full-stack features for vendor and consumer experiences and led frontend development for dashboards, profiles, moodboards, and other e-commerce functionality.
+              Previously, I worked at Homigo as a full-stack developer, where I built marketplace features across consumer, service-provider, and administrative workflows. My work included job posting and bidding, provider onboarding, service-area matching, Stripe payments and payouts, notifications, and analytics.
             </p>
             <p className="about-me-text">
               Outside of development, I enjoy photography, films, shows, and reading.
@@ -136,7 +136,7 @@ export default function FirstSection() {
 
           <div className="experience-card">
             <h3 className="job-title">Full Stack Developer — Homigo</h3>
-            <p className="job-dates">June 2026 – Present</p>
+            <p className="job-dates">April 2026 – July 2026</p>
             <p className="job-description">
               Led the end-to-end implementation of full-stack features for a startup service marketplace across consumer, provider, and admin workflows using Next.js, TypeScript, Node.js, REST APIs, PostgreSQL/Supabase, and Stripe.
             </p>
@@ -147,7 +147,7 @@ export default function FirstSection() {
 
           <div className="experience-card">
             <h3 className="job-title">Full Stack Developer — Koios Marketplace</h3>
-            <p className="job-dates">September 2025 – March 2026</p>
+            <p className="job-dates">September 2025 – Present</p>
             <p className="job-description">
               Implemented end-to-end full-stack features for a startup e-commerce platform across vendor and consumer experiences, social features, responsive UI/UX improvements, and routing/API integrations within a microservice architecture using React, TypeScript, Node.js, REST APIs, and PostgreSQL.
             </p>
